@@ -66,6 +66,16 @@ const faqItems = [
       'En Getafe y alrededores: Leganés, Fuenlabrada, Alcorcón, Móstoles, Pinto, Parla y Madrid capital.',
   },
 ];
+
+// Reseñas reales de nuestra ficha de Google (transcritas literalmente, sin editar el texto).
+const reviews = [
+  { name: 'Juan Moreno', initial: 'J', color: 'pink', reviewCount: '1 opinión', time: 'Hace 4 meses', text: 'Servicio muy bueno y muy rápido los llamé para vender mi chatarra y la vendí en tan solo 5 minutos' },
+  { name: 'Sonia Rubia', initial: 'S', color: 'magenta', reviewCount: '1 opinión', time: 'Hace 4 meses', text: 'Contacte con ellos para vender chatarra y me lo pesaron al momento en 15 minutos lo tenia todo vendido los recomiendo' },
+  { name: 'Ramon Jimenez', initial: 'R', color: 'copper', reviewCount: '1 opinión', time: 'Hace 4 meses', text: 'Los mejores precios del mercado' },
+  { name: 'David Jimenez', initial: 'D', color: 'cyan', reviewCount: '2 opiniones', time: 'Hace 4 días', text: 'Muy profesionales los recomiendo' },
+  { name: 'Miguel Vargas moreno', initial: 'M', color: 'orange', reviewCount: '1 opinión', time: 'Hace 4 meses', text: 'Muy buen servicio y profesionales' },
+  { name: 'Indira Vargas Moreno', initial: 'I', color: 'brown', reviewCount: '1 opinión', time: 'Hace 4 meses', text: 'Muy eficaces y rápidos y muy buen trato' },
+];
 ---
 
 <Layout title={title} description={description} isHome>
@@ -169,14 +179,26 @@ const faqItems = [
       <div class="section-head">
         <span class="eyebrow">Opiniones</span>
         <h2>Lo que dicen nuestros clientes</h2>
-        <p>
-          Puedes ver las opiniones reales de nuestros clientes en nuestra ficha de Google.
-          [TODO-CLIENTE: en cuanto tengáis reseñas destacadas, las añadimos aquí con enlace a la opinión original]
-        </p>
-        <a class="btn btn--call" href={site.googleBusinessUrl} target="_blank" rel="noopener noreferrer">
-          Ver opiniones en Google
-        </a>
+        <p>Reseñas reales de nuestra ficha de Google.</p>
       </div>
+      <div class="grid grid--3">
+        {reviews.map((review) => (
+          <div class="review-card">
+            <div class="review-card__head">
+              <span class={`review-avatar review-avatar--${review.color}`}>{review.initial}</span>
+              <div>
+                <strong>{review.name}</strong>
+                <span class="review-meta">{review.reviewCount}</span>
+              </div>
+            </div>
+            <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★ <span class="review-meta">{review.time}</span></div>
+            <p class="mt-0">{review.text}</p>
+          </div>
+        ))}
+      </div>
+      <a class="btn btn--call" href={site.googleBusinessUrl} target="_blank" rel="noopener noreferrer" style="margin-top:1.5rem">
+        Ver todas las opiniones en Google
+      </a>
     </div>
   </section>
 
