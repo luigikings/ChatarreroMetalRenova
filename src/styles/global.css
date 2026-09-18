@@ -432,6 +432,26 @@ strong { color: var(--text); }
   text-align: center;
   padding: 1rem;
 }
+.gallery-photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+.material-photo {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  margin-bottom: 0.5rem;
+}
+.material-photo-caption {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin: 0;
+}
 
 /* --- FAQ (details nativo, sin JS) ------------------------------------------------ */
 .faq { border-top: 1px solid var(--border); }
