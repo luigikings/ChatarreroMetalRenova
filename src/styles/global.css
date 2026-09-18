@@ -466,7 +466,7 @@ strong { color: var(--text); }
   gap: 0.7rem;
   margin-bottom: 0.6rem;
 }
-.review-card__head strong { display: block; font-size: 0.95rem; }
+.review-card__head strong { font-size: 0.95rem; }
 .review-meta { color: var(--text-muted); font-size: 0.8rem; }
 .review-avatar {
   flex-shrink: 0;
