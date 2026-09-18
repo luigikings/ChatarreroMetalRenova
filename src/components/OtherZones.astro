@@ -1,0 +1,18 @@
+---
+// Enlaza a las demás zonas (todas menos la actual) para reforzar el
+// enlazado interno entre páginas de zona.
+import { site } from '../config/site';
+
+interface Props { current: string }
+const { current } = Astro.props;
+const otherZones = site.zones.filter((z) => z.slug !== current);
+---
+<div class="section-head">
+  <span class="eyebrow">Otras zonas</span>
+  <h2>También trabajamos en</h2>
+</div>
+<ul class="zone-list">
+  {otherZones.map((zone) => (
+    <li><a href={zone.page}>{zone.name}</a></li>
+  ))}
+</ul>

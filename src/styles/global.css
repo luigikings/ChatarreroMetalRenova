@@ -350,8 +350,22 @@ strong { color: var(--text); }
 .hero {
   padding-block: clamp(2.5rem, 8vw, 5rem);
   border-bottom: 1px solid var(--border);
+  position: relative;
 }
 .hero p.lead { font-size: 1.15rem; color: var(--text-muted); max-width: 55ch; }
+
+/* Franja de acento arriba del hero: distingue páginas de material (cobre) y de zona (cian) de un vistazo. */
+.hero--copper::before,
+.hero--cyan::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+.hero--copper::before { background: linear-gradient(90deg, var(--copper), transparent 65%); }
+.hero--cyan::before { background: linear-gradient(90deg, var(--cyan), transparent 65%); }
 .trust-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; padding: 0; list-style: none; }
 .trust-chips li {
   display: flex;

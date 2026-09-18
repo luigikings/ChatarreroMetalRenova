@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Faq from '../components/Faq.astro';
+import OtherZones from '../components/OtherZones.astro';
 import { site, whatsappLink } from '../config/site';
 
 const title = 'Chatarrero en Fuenlabrada | MetalRenova';
@@ -24,7 +25,7 @@ const faqItems = [
 <Layout title={title} description={description} breadcrumbs={[{ name: 'Chatarrero en Fuenlabrada', path: '/chatarrero-fuenlabrada/' }]}>
   <Breadcrumbs items={[{ name: 'Chatarrero en Fuenlabrada', path: '/chatarrero-fuenlabrada/' }]} />
 
-  <section class="hero" style="padding-top:1rem">
+  <section class="hero hero--cyan" style="padding-top:1rem">
     <div class="container">
       <span class="eyebrow">Fuenlabrada</span>
       <h1>Chatarrero en Fuenlabrada</h1>
@@ -70,6 +71,12 @@ const faqItems = [
   <section class="section section--alt">
     <div class="container">
       <Faq items={faqItems} title="Preguntas sobre el servicio en Fuenlabrada" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <OtherZones current="fuenlabrada" />
     </div>
   </section>
 

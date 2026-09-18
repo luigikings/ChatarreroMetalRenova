@@ -10,6 +10,9 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: (page) => !page.includes('/404'),
+      // Se actualiza sola en cada build/despliegue: le dice a Google cuándo se
+      // regeneró el sitio por última vez.
+      lastmod: new Date(),
     }),
   ],
 });
