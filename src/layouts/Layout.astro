@@ -1,0 +1,102 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileCta from '../components/MobileCta.astro';
+import { site } from '../config/site';
+import '../styles/global.css';
+
+interface Breadcrumb {
+  name: string;
+  path: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  breadcrumbs?: Breadcrumb[];
+  isHome?: boolean;
+  noindex?: boolean;
+}
+
+const { title, description, breadcrumbs = [], isHome = false, noindex = false } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, site.url).toString();
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: site.name,
+  url: site.url,
+  telephone: site.phonePrimaryTel,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    postalCode: site.address.postalCode,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    addressCountry: site.address.country,
+  },
+  areaServed: site.zones.map((z) => z.name),
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: site.hours.days,
+    opens: site.hours.opens,
+    closes: site.hours.closes,
+  },
+  sameAs: [site.googleBusinessUrl],
+};
+
+const breadcrumbSchema = breadcrumbs.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: site.url + '/' },
+    ...breadcrumbs.map((b, i) => ({
+      '@type': 'ListItem',
+      position: i + 2,
+      name: b.name,
+      item: site.url + b.path,
+    })),
+  ],
+} : null;
+---
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+  {noindex && <meta name="robots" content="noindex, follow" />}
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preload" href="/fonts/barlow-condensed-latin-700.woff2" as="font" type="font/woff2" crossorigin />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:site_name" content={site.name} />
+  <meta name="twitter:card" content="summary" />
+
+  {isHome && (
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  )}
+  {breadcrumbSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  )}
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+  <Header />
+  <main id="main">
+    <slot />
+  </main>
+  <Footer />
+  <MobileCta />
+</body>
+</html>

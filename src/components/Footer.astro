@@ -1,0 +1,48 @@
+---
+import { site } from '../config/site';
+
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>MetalRenova</h3>
+        <p>
+          Chatarrero en Getafe y sur de Madrid. Recogida de chatarra a domicilio
+          con pago inmediato, y vaciado de pisos, locales y naves.
+        </p>
+        {site.wasteManagerAuthNumber && (
+          <p>Nº autorización gestor de residuos: {site.wasteManagerAuthNumber}</p>
+        )}
+      </div>
+
+      <div>
+        <h3>Zonas donde trabajamos</h3>
+        {/* En Fase 2 estas zonas enlazan a su propia página (/chatarrero-getafe/, etc). Por ahora, texto plano. */}
+        <ul>
+          {site.zones.map((zone) => (
+            <li>{zone.name}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li><a href={`tel:${site.phonePrimaryTel}`}>{site.phonePrimary}</a></li>
+          <li><a href={`tel:${site.phoneSecondaryTel}`}>{site.phoneSecondary}</a></li>
+          <li><a href={site.address.mapsUrl} target="_blank" rel="noopener noreferrer">{site.address.street}, {site.address.postalCode} {site.address.city}</a></li>
+          <li>{site.hours.label}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; {year} {site.name} — {site.tagline}</span>
+      <span>
+        <a href="/aviso-legal/">Aviso legal</a> · <a href="/politica-de-privacidad/">Privacidad</a>
+      </span>
+    </div>
+  </div>
+</footer>

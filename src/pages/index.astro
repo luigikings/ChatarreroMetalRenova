@@ -1,0 +1,198 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Faq from '../components/Faq.astro';
+import { site, whatsappLink } from '../config/site';
+import precios from '../data/precios.json';
+
+const title = 'Chatarrero en Getafe y Madrid | MetalRenova';
+const description =
+  'Compramos chatarra y metales en Getafe y el sur de Madrid, con recogida a domicilio y pago inmediato. Pide tu valoración gratis por WhatsApp.';
+
+const steps = [
+  {
+    icon: 'camera' as const,
+    title: 'Envía fotos por WhatsApp',
+    text: 'Nos cuentas qué material tienes y cuánto, con unas fotos nos hacemos una idea del precio.',
+  },
+  {
+    icon: 'coin' as const,
+    title: 'Te decimos el precio y agendamos',
+    text: 'Te damos un precio orientativo antes de venir y quedamos el día y la hora que mejor te vengan.',
+  },
+  {
+    icon: 'truck' as const,
+    title: 'Recogemos y te pagamos al momento',
+    text: 'Vamos a tu domicilio, pesamos el material delante de ti y te pagamos ahí mismo.',
+  },
+];
+
+function priceLabel(desde: number | null, hasta: number | null) {
+  if (desde === null || hasta === null) return 'Consúltanos por WhatsApp';
+  return `${desde}–${hasta} €/kg`;
+}
+
+const faqItems = [
+  {
+    question: '¿Cuánto pagáis por el cobre?',
+    answer:
+      'El precio del cobre cambia cada día según el mercado del metal. Mándanos fotos por WhatsApp y te decimos el precio antes de venir a recogerlo.',
+  },
+  {
+    question: '¿Venís hoy?',
+    answer:
+      'Intentamos recoger el mismo día según disponibilidad y la zona. Escríbenos por WhatsApp y te confirmamos franja horaria.',
+  },
+  {
+    question: '¿Qué necesito para vender chatarra?',
+    answer:
+      'Nada especial. Ten el material accesible y, si tienes bastante cantidad, haznos unas fotos para calcular el peso aproximado antes de ir.',
+  },
+  {
+    question: '¿Cobráis por la recogida?',
+    answer: 'No. La recogida y el transporte están incluidos cuando te compramos el material.',
+  },
+  {
+    question: '¿En qué zonas trabajáis?',
+    answer:
+      'En Getafe y alrededores: Leganés, Fuenlabrada, Alcorcón, Móstoles, Pinto, Parla y Madrid capital.',
+  },
+];
+---
+
+<Layout title={title} description={description} isHome>
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">Chatarrero en Getafe y sur de Madrid</span>
+      <h1>Vendemos tu chatarra hoy mismo, sin que te muevas de casa</h1>
+      <p class="lead">
+        Recogemos cobre, aluminio, hierro y otros metales en Getafe y alrededores.
+        Te damos el precio por WhatsApp antes de venir y te pagamos al momento.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, quiero pedir una valoración de mi chatarra.')} data-track="whatsapp">
+          <Icon name="whatsapp" style="width:20px;height:20px" />
+          Pide tu valoración por WhatsApp
+        </a>
+        <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+          <Icon name="phone" style="width:20px;height:20px" />
+          Llamar
+        </a>
+      </div>
+      <ul class="trust-chips">
+        <li><Icon name="check" />Recogida el mismo día, según disponibilidad</li>
+        <li><Icon name="coin" />Pago inmediato en mano</li>
+        <li><Icon name="mappin" />Getafe, Leganés, Fuenlabrada y alrededores</li>
+        <li><Icon name="clock" />{site.hours.label}</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Cómo funciona</span>
+        <h2>De la foto al pago, en tres pasos</h2>
+      </div>
+      <div class="grid grid--3">
+        {steps.map((step, i) => (
+          <div class="card card--step">
+            <span class="step-num">{i + 1}</span>
+            <Icon name={step.icon} class="icon" />
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Materiales</span>
+        <h2>Qué metales compramos</h2>
+        <p>Precio orientativo por kilo. Te confirmamos el precio final por WhatsApp con fotos del material.</p>
+      </div>
+      <div class="grid grid--3">
+        {precios.materiales.map((m) => (
+          <div class="material-card">
+            <span class="material-card__name">{m.material}</span>
+            <span class="material-card__price">{priceLabel(m.precio_desde, m.precio_hasta)}</span>
+            <a href="/gestion-de-metales/">Más información →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Zonas</span>
+        <h2>Dónde recogemos chatarra</h2>
+        <p>Con base en Getafe, cubrimos el sur de la Comunidad de Madrid.</p>
+      </div>
+      <ul class="zone-list">
+        {site.zones.map((zone) => (
+          <li><a href="/contacto/">{zone.name}</a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Nuestro trabajo</span>
+        <h2>Fotos de recogidas reales</h2>
+      </div>
+      <div class="grid grid--3">
+        <div class="gallery-item">[TODO-CLIENTE: foto de una recogida de chatarra]</div>
+        <div class="gallery-item">[TODO-CLIENTE: foto del vehículo/equipo cargando]</div>
+        <div class="gallery-item">[TODO-CLIENTE: foto de material clasificado]</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Opiniones</span>
+        <h2>Lo que dicen nuestros clientes</h2>
+        <p>
+          Puedes ver las opiniones reales de nuestros clientes en nuestra ficha de Google.
+          [TODO-CLIENTE: en cuanto tengáis reseñas destacadas, las añadimos aquí con enlace a la opinión original]
+        </p>
+        <a class="btn btn--call" href={site.googleBusinessUrl} target="_blank" rel="noopener noreferrer">
+          Ver opiniones en Google
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <Faq items={faqItems} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-final">
+        <h2>¿Tienes chatarra para vender?</h2>
+        <p style="margin-inline:auto">Escríbenos por WhatsApp con unas fotos y te decimos el precio en minutos.</p>
+        <div class="btn-row">
+          <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, quiero pedir una valoración de mi chatarra.')} data-track="whatsapp">
+            <Icon name="whatsapp" style="width:20px;height:20px" />
+            Pide tu valoración por WhatsApp
+          </a>
+          <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+            <Icon name="phone" style="width:20px;height:20px" />
+            Llamar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

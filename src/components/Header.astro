@@ -1,0 +1,81 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { site, whatsappLink, defaultWhatsappMessage } from '../config/site';
+
+const navItems = [
+  { href: '/', label: 'Inicio' },
+  { href: '/servicios/', label: 'Servicios' },
+  { href: '/como-funciona/', label: 'Cómo funciona' },
+  { href: '/nuestros-trabajos/', label: 'Nuestros trabajos' },
+  { href: '/gestion-de-metales/', label: 'Gestión de metales' },
+  { href: '/contacto/', label: 'Contacto' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <Logo />
+
+    <nav class="nav" aria-label="Principal">
+      <ul>
+        {navItems.map((item) => (
+          <li>
+            <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <a class="btn btn--whatsapp header-cta" href={whatsappLink(defaultWhatsappMessage)} data-track="whatsapp">
+      <Icon name="whatsapp" class="icon" style="width:18px;height:18px" />
+      WhatsApp
+    </a>
+
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav">
+      <Icon name="menu" />
+      <span class="sr-only">Abrir menú</span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobile-nav">
+  <nav aria-label="Principal (móvil)">
+    <ul>
+      {navItems.map((item) => (
+        <li><a href={item.href}>{item.label}</a></li>
+      ))}
+    </ul>
+  </nav>
+  <div class="btn-row" style="margin-top:1.5rem">
+    <a class="btn btn--whatsapp btn--block" href={whatsappLink(defaultWhatsappMessage)} data-track="whatsapp">
+      <Icon name="whatsapp" style="width:18px;height:18px" />
+      Escribir por WhatsApp
+    </a>
+    <a class="btn btn--call btn--block" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+      <Icon name="phone" style="width:18px;height:18px" />
+      Llamar ahora
+    </a>
+  </div>
+</div>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-nav');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>

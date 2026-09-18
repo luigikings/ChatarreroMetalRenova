@@ -1,0 +1,14 @@
+---
+import Icon from './Icon.astro';
+import { site, whatsappLink, defaultWhatsappMessage } from '../config/site';
+---
+<div class="mobile-cta">
+  <a class="mobile-cta__call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+    <Icon name="phone" />
+    Llamar
+  </a>
+  <a class="mobile-cta__whatsapp" href={whatsappLink(defaultWhatsappMessage)} data-track="whatsapp">
+    <Icon name="whatsapp" />
+    WhatsApp
+  </a>
+</div>

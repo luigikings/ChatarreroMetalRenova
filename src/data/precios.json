@@ -1,0 +1,11 @@
+{
+  "actualizado": "2026-09-18",
+  "materiales": [
+    { "material": "Cobre", "slug": "cobre", "precio_desde": null, "precio_hasta": null },
+    { "material": "Aluminio", "slug": "aluminio", "precio_desde": null, "precio_hasta": null },
+    { "material": "Latón", "slug": "laton", "precio_desde": null, "precio_hasta": null },
+    { "material": "Hierro y acero inoxidable", "slug": "hierro-y-acero", "precio_desde": null, "precio_hasta": null },
+    { "material": "Plomo", "slug": "plomo", "precio_desde": null, "precio_hasta": null },
+    { "material": "Baterías usadas", "slug": "baterias", "precio_desde": null, "precio_hasta": null }
+  ]
+}
