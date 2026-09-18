@@ -83,24 +83,25 @@ public/
 ## Pendientes del cliente (TODO-CLIENTE)
 
 Busca `TODO-CLIENTE` en el código (`grep -rn "TODO-CLIENTE" src/`) para encontrarlos
-todos marcados en contexto. Resumen:
+todos marcados en contexto. Resumen de lo que queda:
 
-- **Razón social y NIF/CIF** reales, para `/aviso-legal/` y `/politica-de-privacidad/`
-  (ahora mismo son placeholders) — edítalos en `src/config/site.ts` (`legalName`, `nif`).
 - **Email de contacto**, si queréis mostrarlo en la web (`site.ts` → `email`).
 - **Nº de autorización como gestor de residuos**, si lo tenéis (`site.ts` →
   `wasteManagerAuthNumber`). Si lo rellenas, aparece automáticamente en el pie y en
   el aviso legal; si no, esas frases no se muestran.
-- **Fotos reales**: hay huecos marcados en la home, en "Nuestros trabajos" y en las
-  reseñas. Sustituye esos bloques `[TODO-CLIENTE: ...]` por imágenes reales cuando
-  las tengáis (usa el componente `<Image>` de Astro para que se optimicen solas).
-- **Barrios o polígonos concretos** de Getafe, Leganés y Fuenlabrada, si soléis
-  trabajar en zonas específicas — ayuda al SEO local.
-- **Confirmar si trabajáis en Alcorcón, Móstoles, Pinto, Parla y Madrid capital**
-  con la misma frecuencia que en las 3 zonas con página propia. Si es así, puedo
-  crearles página propia también.
-- **Reseñas reales de Google**: en cuanto tengáis alguna destacada, la añadimos con
-  enlace a la opinión original (no se ha inventado ninguna).
+- **Una foto de un vaciado de local u oficina** para completar la galería de
+  "Nuestros trabajos" (las otras dos ya están puestas).
+- **Barrios o polígonos concretos** de las 8 zonas, si soléis trabajar en sitios
+  específicos — ayuda al SEO local. Ya hay página propia para las 8 zonas
+  (Getafe, Leganés, Fuenlabrada, Alcorcón, Móstoles, Pinto, Parla y Madrid capital).
+- **Reseñas reales de Google**: no se ha podido acceder a Google desde este
+  entorno para copiarlas automáticamente. Manda una captura de pantalla de las
+  reseñas (o el texto tal cual) y se transcriben literalmente, con enlace a tu
+  ficha de Google — nunca se inventa ninguna.
+
+La razón social, el NIF/CIF y el resto de datos legales que no se han dado se
+han omitido directamente del aviso legal y la política de privacidad (en vez de
+dejar un hueco a rellenar), para que esas páginas ya se puedan publicar tal cual.
 
 ## Si en el futuro añadís Google Ads / Analytics
 

@@ -4,8 +4,6 @@
 
 export const site = {
   name: 'MetalRenova',
-  legalName: '[TODO-CLIENTE: razón social completa]',
-  nif: '[TODO-CLIENTE: NIF/CIF]',
   tagline: 'Chatarrero en Madrid',
   domain: 'chatarreriametalrenova.es',
   url: 'https://chatarreriametalrenova.es',

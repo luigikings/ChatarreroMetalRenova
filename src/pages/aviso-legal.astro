@@ -16,12 +16,10 @@ const description = 'Información legal y condiciones de uso del sitio web de Me
 
       <h2>Datos del titular</h2>
       <p>
-        Titular: {site.legalName}<br />
-        NIF/CIF: {site.nif}<br />
+        Titular: {site.name}<br />
         Domicilio: {site.address.street}, {site.address.postalCode} {site.address.city}, {site.address.region}<br />
         Contacto: {site.phonePrimary}
       </p>
-      <p>[TODO-CLIENTE: completa la razón social y el NIF/CIF reales antes de publicar esta página.]</p>
 
       <h2>Objeto</h2>
       <p>
@@ -42,11 +40,12 @@ const description = 'Información legal y condiciones de uso del sitio web de Me
         o de sus legítimos titulares. Queda prohibida su reproducción sin autorización.
       </p>
 
-      <h2>Gestión de residuos</h2>
-      {site.wasteManagerAuthNumber
-        ? <p>Nº de autorización como gestor de residuos: {site.wasteManagerAuthNumber}.</p>
-        : <p>[TODO-CLIENTE: si disponéis de nº de autorización como gestor de residuos, indicadlo aquí.]</p>
-      }
+      {site.wasteManagerAuthNumber && (
+        <>
+          <h2>Gestión de residuos</h2>
+          <p>Nº de autorización como gestor de residuos: {site.wasteManagerAuthNumber}.</p>
+        </>
+      )}
     </div>
   </section>
 </Layout>
