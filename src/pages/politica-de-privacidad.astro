@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site } from '../config/site';
+
+const title = 'Política de privacidad | MetalRenova';
+const description = 'Cómo trata MetalRenova los datos cuando nos contactas por teléfono o WhatsApp.';
+---
+
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Política de privacidad', path: '/politica-de-privacidad/' }]}>
+  <Breadcrumbs items={[{ name: 'Política de privacidad', path: '/politica-de-privacidad/' }]} />
+
+  <section class="section" style="padding-top:1rem">
+    <div class="container">
+      <h1>Política de privacidad</h1>
+
+      <h2>Responsable</h2>
+      <p>
+        {site.legalName} — NIF/CIF: {site.nif}<br />
+        Domicilio: {site.address.street}, {site.address.postalCode} {site.address.city}, {site.address.region}
+      </p>
+      <p>[TODO-CLIENTE: completa la razón social y el NIF/CIF reales antes de publicar esta página.]</p>
+
+      <h2>Esta web no tiene formularios</h2>
+      <p>
+        Esta web no recoge datos a través de formularios ni utiliza cookies de análisis o
+        publicidad. El único contacto se produce cuando tú nos llamas o nos escribes por
+        WhatsApp de forma voluntaria.
+      </p>
+
+      <h2>Datos que tratamos</h2>
+      <p>
+        Cuando nos contactas por teléfono o WhatsApp, tratamos los datos que nos facilitas
+        (nombre, teléfono, dirección y fotos del material) únicamente para gestionar tu
+        solicitud de recogida, presupuesto o mudanza.
+      </p>
+
+      <h2>Conservación</h2>
+      <p>
+        Conservamos estos datos solo durante el tiempo necesario para prestarte el
+        servicio y cumplir con nuestras obligaciones legales.
+      </p>
+
+      <h2>Tus derechos</h2>
+      <p>
+        Puedes ejercer tus derechos de acceso, rectificación y supresión de tus datos
+        escribiéndonos por WhatsApp o llamando al {site.phonePrimary}.
+      </p>
+    </div>
+  </section>
+</Layout>

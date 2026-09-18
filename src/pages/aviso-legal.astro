@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site } from '../config/site';
+
+const title = 'Aviso legal | MetalRenova';
+const description = 'Información legal y condiciones de uso del sitio web de MetalRenova, chatarrero en Getafe y Madrid.';
+---
+
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Aviso legal', path: '/aviso-legal/' }]}>
+  <Breadcrumbs items={[{ name: 'Aviso legal', path: '/aviso-legal/' }]} />
+
+  <section class="section" style="padding-top:1rem">
+    <div class="container">
+      <h1>Aviso legal</h1>
+
+      <h2>Datos del titular</h2>
+      <p>
+        Titular: {site.legalName}<br />
+        NIF/CIF: {site.nif}<br />
+        Domicilio: {site.address.street}, {site.address.postalCode} {site.address.city}, {site.address.region}<br />
+        Contacto: {site.phonePrimary}
+      </p>
+      <p>[TODO-CLIENTE: completa la razón social y el NIF/CIF reales antes de publicar esta página.]</p>
+
+      <h2>Objeto</h2>
+      <p>
+        Este sitio web tiene como finalidad informar sobre los servicios de {site.name}:
+        recogida de chatarra y metales, vaciado de pisos, locales y naves, y mudanzas en
+        Getafe y el sur de Madrid.
+      </p>
+
+      <h2>Condiciones de uso</h2>
+      <p>
+        El acceso a este sitio web es gratuito y no requiere registro. El uso del sitio
+        implica la aceptación de este aviso legal.
+      </p>
+
+      <h2>Propiedad intelectual</h2>
+      <p>
+        Los contenidos de este sitio (textos, imágenes, logotipo) son propiedad de {site.name}
+        o de sus legítimos titulares. Queda prohibida su reproducción sin autorización.
+      </p>
+
+      <h2>Gestión de residuos</h2>
+      {site.wasteManagerAuthNumber
+        ? <p>Nº de autorización como gestor de residuos: {site.wasteManagerAuthNumber}.</p>
+        : <p>[TODO-CLIENTE: si disponéis de nº de autorización como gestor de residuos, indicadlo aquí.]</p>
+      }
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { whatsappLink } from '../config/site';
+
+const title = 'Página no encontrada | MetalRenova';
+const description = 'Esta página no existe o se ha movido. Vuelve al inicio o contacta con MetalRenova por WhatsApp.';
+---
+
+<Layout title={title} description={description} noindex>
+  <section class="hero" style="padding-top:1rem; text-align:center">
+    <div class="container">
+      <span class="eyebrow">Error 404</span>
+      <h1>No hemos encontrado esta página</h1>
+      <p class="lead" style="margin-inline:auto">
+        Puede que el enlace esté mal escrito o que la página se haya movido. Prueba a
+        volver al inicio o escríbenos si buscabas algo en concreto.
+      </p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn btn--cyan" href="/">Ir al inicio</a>
+        <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, no encontré lo que buscaba en la web.')} data-track="whatsapp">
+          <Icon name="whatsapp" style="width:20px;height:20px" />
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

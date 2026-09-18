@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site, whatsappLink } from '../config/site';
+
+const title = 'Mudanzas y portes en Getafe y Madrid | MetalRenova';
+const description =
+  'Hacemos mudanzas residenciales y de oficina en Getafe y el sur de Madrid: carga, transporte y descarga. Pide presupuesto gratis por WhatsApp.';
+---
+
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Mudanzas', path: '/mudanzas/' }]}>
+  <Breadcrumbs items={[{ name: 'Mudanzas', path: '/mudanzas/' }]} />
+
+  <section class="hero" style="padding-top:1rem">
+    <div class="container">
+      <span class="eyebrow">Mudanzas y portes</span>
+      <h1>Mudanzas en Getafe y el sur de Madrid</h1>
+      <p class="lead">
+        Hacemos traslados residenciales y de oficina. Nos encargamos de la carga, el
+        transporte y la descarga, coordinando el día y la hora que mejor te venga.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, quiero presupuesto para una mudanza.')} data-track="whatsapp">
+          <Icon name="whatsapp" style="width:20px;height:20px" />
+          Pedir presupuesto por WhatsApp
+        </a>
+        <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+          <Icon name="phone" style="width:20px;height:20px" />
+          Llamar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid--3">
+        <div class="card">
+          <Icon name="truck" class="icon" />
+          <h3>Mudanzas de casas</h3>
+          <p>Traslados residenciales completos, con cuidado en la carga y el transporte de tus muebles y enseres.</p>
+        </div>
+        <div class="card">
+          <Icon name="shield" class="icon" />
+          <h3>Mudanzas de oficinas</h3>
+          <p>Traslado de mobiliario y equipos de oficina, coordinado para no interrumpir tu actividad más de lo necesario.</p>
+        </div>
+        <div class="card">
+          <Icon name="clock" class="icon" />
+          <h3>Día y hora a tu medida</h3>
+          <p>Quedamos contigo para hacer el traslado cuando mejor te venga.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="cta-final">
+        <h2>¿Tienes una mudanza en marcha?</h2>
+        <p style="margin-inline:auto">Cuéntanos qué hay que mover y desde/hasta dónde. Te damos un presupuesto sin compromiso.</p>
+        <div class="btn-row">
+          <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, quiero presupuesto para una mudanza.')} data-track="whatsapp">
+            <Icon name="whatsapp" style="width:20px;height:20px" />
+            Pedir presupuesto por WhatsApp
+          </a>
+          <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+            <Icon name="phone" style="width:20px;height:20px" />
+            Llamar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

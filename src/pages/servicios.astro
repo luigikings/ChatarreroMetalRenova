@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site, whatsappLink } from '../config/site';
+
+const title = 'Servicios de chatarrero en Getafe | MetalRenova';
+const description =
+  'Recogida de chatarra a domicilio, vaciado de pisos, locales y naves, y mudanzas en Getafe y el sur de Madrid. Pide presupuesto gratis por WhatsApp.';
+
+const services = [
+  {
+    icon: 'coin' as const,
+    title: 'Recogida de chatarra a domicilio',
+    text: 'Compramos cobre, aluminio, hierro y otros metales en Getafe y el sur de Madrid. Nos mandas unas fotos por WhatsApp, te decimos el precio y vamos a recogerlo a tu casa. Pagamos al momento.',
+    cta: { href: '/como-funciona/', label: 'Cómo funciona →' },
+  },
+  {
+    icon: 'truck' as const,
+    title: 'Vaciado de pisos, locales y naves',
+    text: 'Vaciamos naves, locales, oficinas y viviendas completas. Nos encargamos del desmontaje, la clasificación de los materiales y la retirada de todo lo que sobre, dejando el espacio limpio y listo para usar.',
+    cta: { href: '/nuestros-trabajos/', label: 'Ver trabajos realizados →' },
+  },
+  {
+    icon: 'shield' as const,
+    title: 'Mudanzas y portes',
+    text: 'Hacemos mudanzas de casas y oficinas en Getafe y alrededores. Cargamos, transportamos y descargamos con cuidado, y coordinamos el día y la hora que mejor te vengan.',
+    cta: { href: '/mudanzas/', label: 'Más sobre mudanzas →' },
+  },
+];
+---
+
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Servicios', path: '/servicios/' }]}>
+  <Breadcrumbs items={[{ name: 'Servicios', path: '/servicios/' }]} />
+
+  <section class="hero" style="padding-top:1rem">
+    <div class="container">
+      <span class="eyebrow">Qué hacemos</span>
+      <h1>Nuestros servicios en Getafe y el sur de Madrid</h1>
+      <p class="lead">
+        Trabajamos con chatarra y metales, vaciados de espacios y mudanzas. Cuéntanos qué
+        necesitas y te damos un presupuesto sin compromiso por WhatsApp.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, quiero información sobre vuestros servicios.')} data-track="whatsapp">
+          <Icon name="whatsapp" style="width:20px;height:20px" />
+          Escribir por WhatsApp
+        </a>
+        <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+          <Icon name="phone" style="width:20px;height:20px" />
+          Llamar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid--3">
+        {services.map((s) => (
+          <div class="card">
+            <Icon name={s.icon} class="icon" />
+            <h2>{s.title}</h2>
+            <p>{s.text}</p>
+            <a href={s.cta.href}>{s.cta.label}</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Materiales</span>
+        <h2>¿Qué metales compramos?</h2>
+        <p>Cobre, aluminio, bronce, acero, latón, plomo, níquel, zinc, virutas y baterías usadas.</p>
+      </div>
+      <a class="btn btn--call" href="/gestion-de-metales/">Ver todos los materiales →</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-final">
+        <h2>¿En qué te podemos ayudar?</h2>
+        <p style="margin-inline:auto">Escríbenos por WhatsApp y te contamos cómo trabajamos.</p>
+        <div class="btn-row">
+          <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, quiero información sobre vuestros servicios.')} data-track="whatsapp">
+            <Icon name="whatsapp" style="width:20px;height:20px" />
+            Escribir por WhatsApp
+          </a>
+          <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+            <Icon name="phone" style="width:20px;height:20px" />
+            Llamar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

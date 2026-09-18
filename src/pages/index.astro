@@ -134,9 +134,7 @@ const faqItems = [
         <p>Con base en Getafe, cubrimos el sur de la Comunidad de Madrid.</p>
       </div>
       <ul class="zone-list">
-        {site.zones.map((zone) => (
-          <li><a href="/contacto/">{zone.name}</a></li>
-        ))}
+        {site.zones.map((zone) => <li>{zone.name}</li>)}
       </ul>
     </div>
   </section>

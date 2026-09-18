@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site, whatsappLink } from '../config/site';
+
+const title = 'Vaciados realizados en Madrid | MetalRenova';
+const description =
+  'Fotos y ejemplos de vaciados de naves, locales, bares y pisos que hemos hecho en Getafe y el sur de Madrid. Pide tu presupuesto sin compromiso.';
+
+const spaces = [
+  {
+    title: 'Naves y almacenes',
+    text: 'Desmontaje de maquinaria y estructuras metálicas, y vaciado completo de naves industriales y almacenes de gran tamaño.',
+  },
+  {
+    title: 'Locales y oficinas',
+    text: 'Retirada de mobiliario, mamparas y cableado, con limpieza técnica para dejar el local u oficina listo para su próximo uso.',
+  },
+  {
+    title: 'Bares y restaurantes',
+    text: 'Desalojo de cocinas industriales, maquinaria de hostelería en acero inoxidable, barras y mobiliario de negocios de restauración.',
+  },
+  {
+    title: 'Talleres y negocios',
+    text: 'Recogida de residuos metálicos pesados, herramientas obsoletas y piezas descatalogadas, con limpieza del taller.',
+  },
+  {
+    title: 'Pisos y edificios',
+    text: 'Vaciado completo de viviendas para reformas, herencias o desahucios, retirando todos los enseres de forma ágil.',
+  },
+];
+---
+
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Nuestros trabajos', path: '/nuestros-trabajos/' }]}>
+  <Breadcrumbs items={[{ name: 'Nuestros trabajos', path: '/nuestros-trabajos/' }]} />
+
+  <section class="hero" style="padding-top:1rem">
+    <div class="container">
+      <span class="eyebrow">Nuestro trabajo</span>
+      <h1>Vaciados realizados en Getafe y Madrid</h1>
+      <p class="lead">
+        Trabajos de vaciado y retirada de metales en distintos tipos de espacios. Contamos
+        con herramientas de carga y un vehículo propio para cada actuación.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Espacios</span>
+        <h2>Trabajamos en todo tipo de inmuebles</h2>
+      </div>
+      <div class="grid grid--3">
+        {spaces.map((s) => (
+          <div class="card">
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Galería</span>
+        <h2>Fotos de trabajos reales</h2>
+      </div>
+      <div class="grid grid--3">
+        <div class="gallery-item">[TODO-CLIENTE: foto de un vaciado de nave o almacén]</div>
+        <div class="gallery-item">[TODO-CLIENTE: foto de un vaciado de local u oficina]</div>
+        <div class="gallery-item">[TODO-CLIENTE: foto de un vaciado de piso]</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-final">
+        <h2>¿Necesitas presupuestar un vaciado?</h2>
+        <p style="margin-inline:auto">Cuéntanos el tipo de espacio y lo que hay que retirar. Te damos una valoración sin compromiso.</p>
+        <div class="btn-row">
+          <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, quiero presupuestar un vaciado.')} data-track="whatsapp">
+            <Icon name="whatsapp" style="width:20px;height:20px" />
+            Pide presupuesto por WhatsApp
+          </a>
+          <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+            <Icon name="phone" style="width:20px;height:20px" />
+            Llamar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

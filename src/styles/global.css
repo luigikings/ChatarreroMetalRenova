@@ -405,7 +405,7 @@ strong { color: var(--text); }
 .material-card a { font-size: 0.9rem; }
 
 .zone-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
-.zone-list a {
+.zone-list li, .zone-list a {
   display: inline-block;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
