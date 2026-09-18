@@ -17,7 +17,7 @@ export const site = {
   phoneSecondary: '625 75 51 59',
   phoneSecondaryTel: '+34625755159',
 
-  email: '', // [TODO-CLIENTE: email de contacto, si quieren mostrarlo]
+  email: '', // vacío: no se muestra email de contacto en la web, solo teléfono/WhatsApp
 
   address: {
     street: 'Calle Pensamiento, 5',
@@ -40,7 +40,7 @@ export const site = {
   // Perfil de Google Business (para sameAs del schema y para el enlace de opiniones).
   googleBusinessUrl: 'https://maps.app.goo.gl/V32nE6ZpQvygY26YA',
 
-  wasteManagerAuthNumber: '', // [TODO-CLIENTE: nº autorización gestor de residuos, si lo tienen]
+  wasteManagerAuthNumber: '', // vacío: al rellenarlo aparece solo en el pie y el aviso legal
 
   zones: [
     { slug: 'getafe', name: 'Getafe', principal: true, page: '/chatarrero-getafe/' },
