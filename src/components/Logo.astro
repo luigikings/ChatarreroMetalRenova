@@ -1,11 +1,37 @@
 ---
-import Icon from './Icon.astro';
+// Marca de MetalRenova: icono "M" (aproximación en SVG del logo real,
+// dibujada a mano ya que solo tenemos capturas, no el vectorial original)
+// + wordmark: METAL sólido + RENOVA en contorno, igual que el logo oficial.
 ---
-<a href="/" class="logo" aria-label={`${'MetalRenova'} — ir al inicio`}>
-  <Icon name="recycle" class="logo-mark" />
-  <span class="logo-word">Metal<span>Renova</span></span>
+<a href="/" class="logo" aria-label="MetalRenova — ir al inicio">
+  <svg viewBox="0 0 100 100" class="logo-mark" aria-hidden="true">
+    <defs>
+      <linearGradient id="mrMarkGrad" x1="0%" y1="30%" x2="100%" y2="70%">
+        <stop offset="0%" stop-color="#22D3EE" />
+        <stop offset="55%" stop-color="#8FE9F2" />
+        <stop offset="100%" stop-color="#F2F0EC" />
+      </linearGradient>
+    </defs>
+    <path
+      d="M16,80 L16,22 L50,54 L84,22 L84,80"
+      fill="none"
+      stroke="url(#mrMarkGrad)"
+      stroke-width="9"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M22,72 Q50,48 80,26"
+      fill="none"
+      stroke="#22D3EE"
+      stroke-width="4"
+      stroke-linecap="round"
+      opacity="0.85"
+    />
+  </svg>
+  <span class="logo-word"><span class="logo-word__solid">Metal</span><span class="logo-word__outline">Renova</span></span>
 </a>
 
 <style>
-  .logo-mark { width: 28px; height: 28px; color: var(--cyan); }
+  .logo-mark { width: 30px; height: 30px; flex-shrink: 0; }
 </style>

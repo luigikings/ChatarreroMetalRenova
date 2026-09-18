@@ -255,8 +255,15 @@ strong { color: var(--text); }
 }
 .logo { display: flex; align-items: center; gap: 0.5rem; color: var(--text); text-decoration: none; }
 .logo svg { height: 30px; width: auto; }
-.logo-word { font-family: var(--font-heading); font-weight: 700; font-size: 1.35rem; text-transform: uppercase; letter-spacing: 0.02em; }
-.logo-word span { color: var(--copper); }
+.logo-word { font-family: var(--font-heading); font-weight: 700; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 0.02em; }
+.logo-word__solid { color: var(--text); }
+.logo-word__outline { color: var(--text); font-weight: 500; }
+@supports (-webkit-text-stroke: 1px black) {
+  .logo-word__outline {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text);
+  }
+}
 
 .nav { display: none; }
 .nav ul { list-style: none; display: flex; gap: 1.6rem; margin: 0; padding: 0; }
