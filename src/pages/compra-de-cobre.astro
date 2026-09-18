@@ -1,8 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { site, whatsappLink } from '../config/site';
+import fotoTuberia from '../assets/images/tuberia-cobre.jpg';
+import fotoCable from '../assets/images/cable-cobre.jpg';
 
 const title = 'Compra de cobre en Getafe y Madrid | MetalRenova';
 const description =
@@ -36,7 +39,11 @@ const description =
 
   <section class="section">
     <div class="container">
-      <div class="section-head">
+      <div class="grid grid--2">
+        <Image src={fotoTuberia} alt="Tuberías de cobre recogidas por MetalRenova" width={480} height={360} class="gallery-photo" loading="lazy" />
+        <Image src={fotoCable} alt="Cable de cobre recogido por MetalRenova" width={480} height={360} class="gallery-photo" loading="lazy" />
+      </div>
+      <div class="section-head" style="margin-top:1.5rem">
         <span class="eyebrow">Qué cobre compramos</span>
         <h2>Cable, tuberías y restos de instalaciones</h2>
         <p>

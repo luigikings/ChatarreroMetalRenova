@@ -1,8 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { site, whatsappLink } from '../config/site';
+import fotoEquipoCargando from '../assets/images/equipo-cargando-camion-obra.jpg';
 
 const title = 'Cómo funciona la recogida de chatarra | MetalRenova';
 const description =
@@ -59,6 +61,13 @@ const steps = [
           </div>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <Image src={fotoEquipoCargando} alt="Equipo de MetalRenova cargando material en el camión con grúa" width={900} height={600} class="material-photo" loading="lazy" />
+      <p class="material-photo-caption">Nuestro equipo cargando material en una recogida real.</p>
     </div>
   </section>
 
