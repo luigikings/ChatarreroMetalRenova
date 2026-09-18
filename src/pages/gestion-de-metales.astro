@@ -3,23 +3,28 @@ import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { site, whatsappLink } from '../config/site';
+import precios from '../data/precios.json';
 
 const title = 'Compra de metales y chatarra en Madrid | MetalRenova';
 const description =
   'Compramos cobre, aluminio, bronce, acero, latón, plomo, níquel, zinc, virutas y baterías en Getafe y Madrid, con recogida gratuita y pago inmediato.';
 
 const materials = [
-  { name: 'Cobre', text: 'Cableado, tuberías y restos eléctricos. Pagamos según la cotización del día y retiramos todo a domicilio sin coste.' },
-  { name: 'Aluminio', text: 'Perfiles, ventanas, chapas y piezas industriales, con recogida ágil y pago inmediato.' },
-  { name: 'Bronce', text: 'Grifería, piezas industriales y elementos ornamentales, con una valoración justa y pago al momento.' },
-  { name: 'Hierro y acero', text: 'Estructuras, vigas y chatarra pesada. Nos encargamos del transporte y la carga.' },
-  { name: 'Latón', text: 'Válvulas, piezas mecánicas y restos de producción, con un servicio rápido y sin complicaciones.' },
-  { name: 'Plomo', text: 'Tuberías antiguas y materiales pesados, con una gestión segura.' },
-  { name: 'Níquel', text: 'Aleaciones especiales y materiales técnicos de alto valor, con recogida directa en tu ubicación.' },
-  { name: 'Zinc', text: 'Chapas, cubiertas y restos de obra galvanizados, liberando tu espacio de forma inmediata.' },
-  { name: 'Virutas', text: 'Restos de mecanizado y residuos industriales, con recogida rápida para mantener tu zona de trabajo operativa.' },
-  { name: 'Baterías usadas', text: 'Recogida de baterías de vehículos y maquinaria, sin coste para ti.' },
+  { slug: 'cobre', name: 'Cobre', text: 'Cableado, tuberías y restos eléctricos. Pagamos según la cotización del día y retiramos todo a domicilio sin coste.' },
+  { slug: 'aluminio', name: 'Aluminio', text: 'Perfiles, ventanas, chapas y piezas industriales, con recogida ágil y pago inmediato.' },
+  { slug: 'bronce', name: 'Bronce', text: 'Grifería, piezas industriales y elementos ornamentales, con una valoración justa y pago al momento.' },
+  { slug: 'hierro-y-acero', name: 'Hierro y acero', text: 'Estructuras, vigas y chatarra pesada. Nos encargamos del transporte y la carga.' },
+  { slug: 'laton', name: 'Latón', text: 'Válvulas, piezas mecánicas y restos de producción, con un servicio rápido y sin complicaciones.' },
+  { slug: 'plomo', name: 'Plomo', text: 'Tuberías antiguas y materiales pesados, con una gestión segura.' },
+  { slug: 'niquel', name: 'Níquel', text: 'Aleaciones especiales y materiales técnicos de alto valor, con recogida directa en tu ubicación.' },
+  { slug: 'zinc', name: 'Zinc', text: 'Chapas, cubiertas y restos de obra galvanizados, liberando tu espacio de forma inmediata.' },
+  { slug: 'virutas', name: 'Virutas', text: 'Restos de mecanizado y residuos industriales, con recogida rápida para mantener tu zona de trabajo operativa.' },
+  { slug: 'baterias', name: 'Baterías usadas', text: 'Recogida de baterías de vehículos y maquinaria, sin coste para ti.' },
 ];
+
+function paginaDe(slug: string): string | null {
+  return precios.materiales.find((m) => m.slug === slug)?.pagina ?? null;
+}
 ---
 
 <Layout title={title} description={description} breadcrumbs={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }]}>
@@ -53,13 +58,18 @@ const materials = [
         <h2>Te compramos esto y te pagamos bien</h2>
       </div>
       <div class="grid grid--3">
-        {materials.map((m) => (
-          <div class="material-card">
-            <span class="material-card__name">{m.name}</span>
-            <p class="mt-0">{m.text}</p>
-          </div>
-        ))}
+        {materials.map((m) => {
+          const pagina = paginaDe(m.slug);
+          return (
+            <div class="material-card">
+              <span class="material-card__name">{m.name}</span>
+              <p class="mt-0">{m.text}</p>
+              {pagina && <a href={pagina}>Más información →</a>}
+            </div>
+          );
+        })}
       </div>
+      <p style="margin-top:1.5rem"><a href="/precios-chatarra/">Ver la tabla de precios →</a></p>
     </div>
   </section>
 

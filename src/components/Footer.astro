@@ -19,10 +19,9 @@ const year = new Date().getFullYear();
 
       <div>
         <h3>Zonas donde trabajamos</h3>
-        {/* En Fase 2 estas zonas enlazan a su propia página (/chatarrero-getafe/, etc). Por ahora, texto plano. */}
         <ul>
           {site.zones.map((zone) => (
-            <li>{zone.name}</li>
+            <li>{zone.page ? <a href={zone.page}>{zone.name}</a> : zone.name}</li>
           ))}
         </ul>
       </div>

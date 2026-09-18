@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site, whatsappLink } from '../config/site';
+
+const title = 'Compra de baterías usadas en Madrid | MetalRenova';
+const description =
+  'Compramos baterías usadas de coche, moto y maquinaria en Getafe y el sur de Madrid. Recogida a domicilio sin coste y pago inmediato.';
+---
+
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }, { name: 'Compra de baterías', path: '/compra-de-baterias/' }]}>
+  <Breadcrumbs items={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }, { name: 'Compra de baterías', path: '/compra-de-baterias/' }]} />
+
+  <section class="hero" style="padding-top:1rem">
+    <div class="container">
+      <span class="eyebrow text-copper">Baterías usadas</span>
+      <h1>Compra de baterías usadas en Getafe y Madrid</h1>
+      <p class="lead">
+        Compramos baterías usadas de coches, motos y maquinaria. Las recogemos en tu
+        domicilio, las manipulamos con cuidado para evitar derrames y te pagamos al
+        momento.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, tengo baterías usadas para vender.')} data-track="whatsapp">
+          <Icon name="whatsapp" style="width:20px;height:20px" />
+          Pide precio por WhatsApp
+        </a>
+        <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+          <Icon name="phone" style="width:20px;height:20px" />
+          Llamar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Qué baterías compramos</span>
+        <h2>De coches, motos, maquinaria y más</h2>
+        <p>Compramos baterías de plomo-ácido usadas de distintos tipos:</p>
+      </div>
+      <ul>
+        <li>Baterías de coche y moto</li>
+        <li>Baterías de maquinaria y vehículos industriales</li>
+        <li>Baterías estacionarias (equipos, alarmas, SAI)</li>
+        <li>Lotes de baterías de talleres y desguaces</li>
+      </ul>
+      <p>
+        No hace falta que estén en buen estado ni que funcionen: nos interesan también
+        las baterías agotadas o dañadas, siempre que no tengan roturas graves que puedan
+        provocar derrames durante el transporte.
+      </p>
+      <p>
+        Si tienes una sola batería o varias acumuladas de un taller, garaje o negocio, te
+        las compramos igual. Solo tienes que decirnos cuántas tienes y de qué tipo, y te
+        damos un precio orientativo antes de venir.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Proceso</span>
+        <h2>Cómo vendemos tus baterías</h2>
+      </div>
+      <p>
+        Nos escribes por WhatsApp contándonos cuántas baterías tienes y de qué tipo, con
+        una foto si puedes. Te damos un precio orientativo y quedamos contigo en Getafe o
+        en cualquiera de las zonas donde trabajamos. Recogemos las baterías con cuidado,
+        evitando golpes o derrames, y te pagamos al momento en efectivo.
+      </p>
+      <p>
+        No hace falta que las lleves a ningún sitio: vamos nosotros a por ellas, ya sea a
+        tu casa, tu garaje o tu taller, sin coste añadido por la recogida.
+      </p>
+      <p>
+        Las baterías de plomo-ácido son de los materiales que más se reciclan, así que
+        mejor entregárnoslas a nosotros que dejarlas acumuladas o tirarlas con el resto de
+        la basura. Si tienes varias de distintos tamaños o marcas, no hay problema: te las
+        compramos todas en la misma visita.
+      </p>
+      <a href="/gestion-de-metales/">Ver el resto de metales que compramos →</a>
+      {' · '}
+      <a href="/precios-chatarra/">Cómo calculamos el precio →</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-final">
+        <h2>¿Tienes baterías para vender?</h2>
+        <p style="margin-inline:auto">Cuéntanos cuántas tienes y te decimos el precio por WhatsApp.</p>
+        <div class="btn-row">
+          <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, tengo baterías usadas para vender.')} data-track="whatsapp">
+            <Icon name="whatsapp" style="width:20px;height:20px" />
+            Pide precio por WhatsApp
+          </a>
+          <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+            <Icon name="phone" style="width:20px;height:20px" />
+            Llamar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

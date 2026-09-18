@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import { site, whatsappLink } from '../config/site';
+
+const title = 'Chatarrero en Leganés | MetalRenova';
+const description =
+  'Recogida de chatarra a domicilio en Leganés, con pago inmediato. Cobre, aluminio, hierro y más metales, desde nuestra base en el sur de Madrid.';
+
+const faqItems = [
+  {
+    question: '¿Cuánto tardáis en llegar a Leganés?',
+    answer: 'Al estar tan cerca de Getafe, donde tenemos la base, solemos poder organizar la recogida en Leganés con poca antelación.',
+  },
+  {
+    question: '¿Recogéis chatarra de negocios en Leganés, no solo de particulares?',
+    answer: 'Sí, trabajamos tanto con particulares como con talleres, obras y negocios de Leganés que necesiten deshacerse de metales.',
+  },
+];
+---
+
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Chatarrero en Leganés', path: '/chatarrero-leganes/' }]}>
+  <Breadcrumbs items={[{ name: 'Chatarrero en Leganés', path: '/chatarrero-leganes/' }]} />
+
+  <section class="hero" style="padding-top:1rem">
+    <div class="container">
+      <span class="eyebrow">Leganés</span>
+      <h1>Chatarrero en Leganés</h1>
+      <p class="lead">
+        Leganés está a un paso de Getafe, donde tenemos nuestra base, así que forma parte
+        de nuestra zona habitual de recogidas. Nos mandas fotos de tu material y coordinamos
+        el día que mejor te venga.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, estoy en Leganés y tengo chatarra para vender.')} data-track="whatsapp">
+          <Icon name="whatsapp" style="width:20px;height:20px" />
+          Pide recogida en Leganés
+        </a>
+        <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+          <Icon name="phone" style="width:20px;height:20px" />
+          Llamar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Servicio en Leganés</span>
+        <h2>Compra de metales y recogida a domicilio</h2>
+        <p>
+          En Leganés recogemos los mismos materiales que en el resto de nuestra zona:
+          cobre, aluminio, hierro, latón y el resto de metales que puedes consultar en
+          <a href="/gestion-de-metales/">gestión de metales</a>. El proceso es siempre el
+          mismo: fotos por WhatsApp, precio orientativo y recogida con pago al momento,
+          tal y como explicamos en <a href="/como-funciona/">cómo funciona</a>.
+        </p>
+        <p>
+          Si en Leganés necesitas vaciar un piso, un local o una nave, también podemos
+          ayudarte: échale un vistazo a nuestros <a href="/servicios/">servicios</a> o al
+          detalle del <a href="/vaciado-de-pisos-y-naves/">servicio de vaciados</a>.
+        </p>
+      </div>
+      <p>[TODO-CLIENTE: si tenéis referencias concretas de Leganés (barrios, polígonos donde soléis trabajar), decídmelo y lo añado.]</p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <Faq items={faqItems} title="Preguntas sobre el servicio en Leganés" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-final">
+        <h2>¿Tienes chatarra en Leganés?</h2>
+        <p style="margin-inline:auto">Escríbenos por WhatsApp con fotos y te decimos el precio en minutos.</p>
+        <div class="btn-row">
+          <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, estoy en Leganés y tengo chatarra para vender.')} data-track="whatsapp">
+            <Icon name="whatsapp" style="width:20px;height:20px" />
+            Pide recogida en Leganés
+          </a>
+          <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+            <Icon name="phone" style="width:20px;height:20px" />
+            Llamar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

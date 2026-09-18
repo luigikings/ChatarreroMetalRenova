@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site, whatsappLink } from '../config/site';
+
+const title = 'Compra de cobre en Getafe y Madrid | MetalRenova';
+const description =
+  'Compramos cobre en Getafe y el sur de Madrid: cable, tuberías y restos eléctricos. Recogida a domicilio gratuita y pago inmediato en efectivo.';
+---
+
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }, { name: 'Compra de cobre', path: '/compra-de-cobre/' }]}>
+  <Breadcrumbs items={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }, { name: 'Compra de cobre', path: '/compra-de-cobre/' }]} />
+
+  <section class="hero" style="padding-top:1rem">
+    <div class="container">
+      <span class="eyebrow text-copper">Cobre</span>
+      <h1>Compra de cobre en Getafe y Madrid</h1>
+      <p class="lead">
+        El cobre es uno de los metales que mejor pagamos, porque es de los más buscados en
+        el reciclaje. Si tienes cable, tuberías o restos de una instalación, te decimos el
+        precio antes de venir y lo recogemos en tu domicilio sin coste.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, tengo cobre para vender.')} data-track="whatsapp">
+          <Icon name="whatsapp" style="width:20px;height:20px" />
+          Pide precio del cobre por WhatsApp
+        </a>
+        <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+          <Icon name="phone" style="width:20px;height:20px" />
+          Llamar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Qué cobre compramos</span>
+        <h2>Cable, tuberías y restos de instalaciones</h2>
+        <p>
+          Compramos cualquier tipo de cobre que tengas en casa, en una obra o en un taller:
+        </p>
+      </div>
+      <ul>
+        <li>Cable eléctrico, pelado o sin pelar (de instalaciones, obras o reformas)</li>
+        <li>Tuberías de cobre de fontanería y calefacción</li>
+        <li>Motores y bobinados con hilo de cobre</li>
+        <li>Radiadores y serpentines</li>
+        <li>Restos y recortes de talleres o instalaciones eléctricas</li>
+      </ul>
+      <p>
+        El cobre limpio, sin funda de plástico ni mezclado con otros metales, suele valer
+        más que el cable con recubrimiento, porque tiene más pureza. Sea como sea, te lo
+        compramos y te decimos el precio exacto al ver el material.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Proceso</span>
+        <h2>Cómo vendemos tu cobre</h2>
+      </div>
+      <p>
+        Nos mandas unas fotos del cobre que tienes por WhatsApp, nos dices más o menos la
+        cantidad y te damos un precio orientativo según la cotización del día. Si te
+        interesa, quedamos contigo en Getafe o en cualquiera de las zonas donde trabajamos,
+        vamos a tu domicilio, pesamos el material delante de ti y te pagamos al momento,
+        en efectivo. Todo el proceso, desde la primera foto hasta el pago, suele resolverse
+        el mismo día.
+      </p>
+      <p>
+        Es habitual que nos llame gente que está haciendo una reforma eléctrica, cambiando
+        una instalación de fontanería o vaciando un taller y se encuentra con cable o
+        tubería de cobre de sobra. En esos casos también podemos encargarnos del resto del
+        material que sobre, no solo del cobre.
+      </p>
+      <a href="/gestion-de-metales/">Ver el resto de metales que compramos →</a>
+      {' · '}
+      <a href="/precios-chatarra/">Cómo calculamos el precio →</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-final">
+        <h2>¿Tienes cobre para vender?</h2>
+        <p style="margin-inline:auto">Mándanos fotos y te decimos el precio de hoy por WhatsApp.</p>
+        <div class="btn-row">
+          <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, tengo cobre para vender.')} data-track="whatsapp">
+            <Icon name="whatsapp" style="width:20px;height:20px" />
+            Pide precio del cobre
+          </a>
+          <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+            <Icon name="phone" style="width:20px;height:20px" />
+            Llamar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

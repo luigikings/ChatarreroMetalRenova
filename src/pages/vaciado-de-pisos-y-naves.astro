@@ -1,0 +1,125 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site, whatsappLink } from '../config/site';
+
+const title = 'Vaciado de pisos, locales y naves en Madrid | MetalRenova';
+const description =
+  'Vaciamos pisos, locales y naves en Getafe y el sur de Madrid. Desmontaje, clasificación y retirada completa, dejando el espacio limpio.';
+
+const steps = [
+  {
+    title: 'Nos cuentas el espacio',
+    text: 'Nos dices qué tipo de inmueble es, el tamaño aproximado y qué hay dentro. Con eso te damos una primera valoración.',
+  },
+  {
+    title: 'Visitamos si hace falta',
+    text: 'Para vaciados grandes, pasamos a ver el espacio en persona y te damos un presupuesto cerrado antes de empezar.',
+  },
+  {
+    title: 'Vaciamos y limpiamos',
+    text: 'Desmontamos lo necesario, clasificamos los materiales y retiramos todo, dejando el espacio listo para su siguiente uso.',
+  },
+];
+---
+
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Servicios', path: '/servicios/' }, { name: 'Vaciado de pisos y naves', path: '/vaciado-de-pisos-y-naves/' }]}>
+  <Breadcrumbs items={[{ name: 'Servicios', path: '/servicios/' }, { name: 'Vaciado de pisos y naves', path: '/vaciado-de-pisos-y-naves/' }]} />
+
+  <section class="hero" style="padding-top:1rem">
+    <div class="container">
+      <span class="eyebrow">Vaciados</span>
+      <h1>Vaciado de pisos, locales y naves en Getafe y Madrid</h1>
+      <p class="lead">
+        Vaciamos cualquier tipo de espacio: pisos para reformar, locales que cierran,
+        naves industriales o talleres. Nos encargamos del desmontaje, la clasificación de
+        los materiales y la retirada completa, dejando el espacio limpio.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, necesito presupuesto para un vaciado.')} data-track="whatsapp">
+          <Icon name="whatsapp" style="width:20px;height:20px" />
+          Pide presupuesto por WhatsApp
+        </a>
+        <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+          <Icon name="phone" style="width:20px;height:20px" />
+          Llamar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Qué incluye</span>
+        <h2>Un vaciado completo, sin que muevas un dedo</h2>
+      </div>
+      <ul>
+        <li>Desmontaje de muebles, estructuras y maquinaria si hace falta</li>
+        <li>Clasificación de los materiales (metales, madera, electrodomésticos)</li>
+        <li>Carga y transporte con nuestro propio vehículo y herramientas</li>
+        <li>Limpieza básica del espacio al terminar</li>
+      </ul>
+      <p>
+        Si en el vaciado aparecen metales con valor (cobre, aluminio, hierro), lo tenemos
+        en cuenta a la hora de darte el presupuesto: en muchos casos el valor del metal
+        recuperado reduce lo que tienes que pagar por el vaciado.
+      </p>
+      <p>
+        Trabajamos con particulares que necesitan vaciar el piso de un familiar, con
+        comunidades de vecinos, y con negocios que cierran o se trasladan y tienen que
+        dejar el local vacío. Cada caso es distinto, así que preferimos que nos cuentes tu
+        situación y adaptamos el servicio a lo que necesitas.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Proceso</span>
+        <h2>Cómo funciona un vaciado</h2>
+      </div>
+      <div class="grid grid--3">
+        {steps.map((step, i) => (
+          <div class="card card--step">
+            <span class="step-num">{i + 1}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Ejemplos</span>
+        <h2>Trabajos de vaciado que hemos hecho</h2>
+        <p>Naves, locales, oficinas, bares y viviendas. Puedes ver el detalle de cada tipo de espacio en nuestra galería de trabajos.</p>
+      </div>
+      <a class="btn btn--call" href="/nuestros-trabajos/">Ver trabajos realizados →</a>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="cta-final">
+        <h2>¿Necesitas presupuestar un vaciado?</h2>
+        <p style="margin-inline:auto">Cuéntanos el tipo de espacio y lo que hay que retirar. Te damos una valoración sin compromiso.</p>
+        <div class="btn-row">
+          <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, necesito presupuesto para un vaciado.')} data-track="whatsapp">
+            <Icon name="whatsapp" style="width:20px;height:20px" />
+            Pide presupuesto por WhatsApp
+          </a>
+          <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+            <Icon name="phone" style="width:20px;height:20px" />
+            Llamar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

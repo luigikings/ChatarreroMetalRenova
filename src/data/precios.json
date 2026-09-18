@@ -1,11 +1,15 @@
 {
   "actualizado": "2026-09-18",
   "materiales": [
-    { "material": "Cobre", "slug": "cobre", "precio_desde": null, "precio_hasta": null },
-    { "material": "Aluminio", "slug": "aluminio", "precio_desde": null, "precio_hasta": null },
-    { "material": "Latón", "slug": "laton", "precio_desde": null, "precio_hasta": null },
-    { "material": "Hierro y acero inoxidable", "slug": "hierro-y-acero", "precio_desde": null, "precio_hasta": null },
-    { "material": "Plomo", "slug": "plomo", "precio_desde": null, "precio_hasta": null },
-    { "material": "Baterías usadas", "slug": "baterias", "precio_desde": null, "precio_hasta": null }
+    { "material": "Cobre", "slug": "cobre", "precio_desde": null, "precio_hasta": null, "pagina": "/compra-de-cobre/" },
+    { "material": "Aluminio", "slug": "aluminio", "precio_desde": null, "precio_hasta": null, "pagina": "/compra-de-aluminio/" },
+    { "material": "Latón", "slug": "laton", "precio_desde": null, "precio_hasta": null, "pagina": "/compra-de-laton/" },
+    { "material": "Hierro y acero", "slug": "hierro-y-acero", "precio_desde": null, "precio_hasta": null, "pagina": "/compra-de-hierro-y-acero/" },
+    { "material": "Bronce", "slug": "bronce", "precio_desde": null, "precio_hasta": null, "pagina": null },
+    { "material": "Plomo", "slug": "plomo", "precio_desde": null, "precio_hasta": null, "pagina": null },
+    { "material": "Níquel", "slug": "niquel", "precio_desde": null, "precio_hasta": null, "pagina": null },
+    { "material": "Zinc", "slug": "zinc", "precio_desde": null, "precio_hasta": null, "pagina": null },
+    { "material": "Virutas", "slug": "virutas", "precio_desde": null, "precio_hasta": null, "pagina": null },
+    { "material": "Baterías usadas", "slug": "baterias", "precio_desde": null, "precio_hasta": null, "pagina": "/compra-de-baterias/" }
   ]
 }

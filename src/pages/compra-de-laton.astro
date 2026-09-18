@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site, whatsappLink } from '../config/site';
+
+const title = 'Compra de latón en Getafe y Madrid | MetalRenova';
+const description =
+  'Compramos latón en Getafe y el sur de Madrid: válvulas, grifería y piezas mecánicas. Recogida a domicilio gratuita y pago inmediato en efectivo.';
+---
+
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }, { name: 'Compra de latón', path: '/compra-de-laton/' }]}>
+  <Breadcrumbs items={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }, { name: 'Compra de latón', path: '/compra-de-laton/' }]} />
+
+  <section class="hero" style="padding-top:1rem">
+    <div class="container">
+      <span class="eyebrow text-copper">Latón</span>
+      <h1>Compra de latón en Getafe y Madrid</h1>
+      <p class="lead">
+        El latón se encuentra sobre todo en grifería, válvulas y piezas mecánicas, y suele
+        pagarse bien por su contenido en cobre. Si tienes latón acumulado, te lo compramos
+        y lo recogemos en tu domicilio.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, tengo latón para vender.')} data-track="whatsapp">
+          <Icon name="whatsapp" style="width:20px;height:20px" />
+          Pide precio del latón por WhatsApp
+        </a>
+        <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+          <Icon name="phone" style="width:20px;height:20px" />
+          Llamar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Qué latón compramos</span>
+        <h2>Grifería, válvulas y piezas mecánicas</h2>
+        <p>El latón aparece sobre todo en instalaciones de fontanería y piezas de precisión:</p>
+      </div>
+      <ul>
+        <li>Grifería y válvulas de fontanería</li>
+        <li>Piezas mecánicas y de cerrajería</li>
+        <li>Cerraduras y bombines</li>
+        <li>Restos de producción y mecanizado</li>
+        <li>Elementos ornamentales y de decoración</li>
+      </ul>
+      <p>
+        Es un material que suele salir en reformas de baños y cocinas, en el desmontaje de
+        instalaciones antiguas o en talleres que trabajan con piezas de precisión. Te lo
+        compramos junto con cualquier otro metal que tengas de la misma actuación.
+      </p>
+      <p>
+        También es habitual encontrar latón en lámparas antiguas, herrajes de muebles o
+        restos de fontanería de reformas más viejas. Se reconoce por su color dorado y
+        porque no es magnético, pero si tienes dudas, mándanos una foto y te decimos qué es.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Proceso</span>
+        <h2>Cómo vendemos tu latón</h2>
+      </div>
+      <p>
+        Mándanos fotos del latón por WhatsApp, cuéntanos la cantidad aproximada y te damos
+        un precio orientativo antes de venir. Quedamos contigo en Getafe o en cualquiera de
+        las zonas donde trabajamos, recogemos el material y te pagamos al momento, en
+        efectivo, sin esperas ni papeleos.
+      </p>
+      <p>
+        Si tienes piezas mezcladas de varios metales (latón, cobre, acero) y no sabes
+        separarlas, no hace falta que lo hagas: nosotros clasificamos el material en el
+        momento de la recogida y te pagamos según lo que corresponda a cada uno.
+      </p>
+      <a href="/gestion-de-metales/">Ver el resto de metales que compramos →</a>
+      {' · '}
+      <a href="/precios-chatarra/">Cómo calculamos el precio →</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-final">
+        <h2>¿Tienes latón para vender?</h2>
+        <p style="margin-inline:auto">Mándanos fotos y te decimos el precio de hoy por WhatsApp.</p>
+        <div class="btn-row">
+          <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, tengo latón para vender.')} data-track="whatsapp">
+            <Icon name="whatsapp" style="width:20px;height:20px" />
+            Pide precio del latón
+          </a>
+          <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+            <Icon name="phone" style="width:20px;height:20px" />
+            Llamar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -45,14 +45,14 @@ export const site = {
   wasteManagerAuthNumber: '', // [TODO-CLIENTE: nº autorización gestor de residuos, si lo tienen]
 
   zones: [
-    { slug: 'getafe', name: 'Getafe', principal: true },
-    { slug: 'leganes', name: 'Leganés', principal: false },
-    { slug: 'fuenlabrada', name: 'Fuenlabrada', principal: false },
-    { slug: 'alcorcon', name: 'Alcorcón', principal: false },
-    { slug: 'mostoles', name: 'Móstoles', principal: false },
-    { slug: 'pinto', name: 'Pinto', principal: false },
-    { slug: 'parla', name: 'Parla', principal: false },
-    { slug: 'madrid', name: 'Madrid capital', principal: false },
+    { slug: 'getafe', name: 'Getafe', principal: true, page: '/chatarrero-getafe/' },
+    { slug: 'leganes', name: 'Leganés', principal: false, page: '/chatarrero-leganes/' },
+    { slug: 'fuenlabrada', name: 'Fuenlabrada', principal: false, page: '/chatarrero-fuenlabrada/' },
+    { slug: 'alcorcon', name: 'Alcorcón', principal: false, page: null },
+    { slug: 'mostoles', name: 'Móstoles', principal: false, page: null },
+    { slug: 'pinto', name: 'Pinto', principal: false, page: null },
+    { slug: 'parla', name: 'Parla', principal: false, page: null },
+    { slug: 'madrid', name: 'Madrid capital', principal: false, page: null },
   ],
 
   materials: [

@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site, whatsappLink } from '../config/site';
+
+const title = 'Compra de aluminio en Getafe y Madrid | MetalRenova';
+const description =
+  'Compramos aluminio en Getafe y el sur de Madrid: perfiles, ventanas, chapa y piezas industriales. Recogida a domicilio y pago inmediato.';
+---
+
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }, { name: 'Compra de aluminio', path: '/compra-de-aluminio/' }]}>
+  <Breadcrumbs items={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }, { name: 'Compra de aluminio', path: '/compra-de-aluminio/' }]} />
+
+  <section class="hero" style="padding-top:1rem">
+    <div class="container">
+      <span class="eyebrow text-copper">Aluminio</span>
+      <h1>Compra de aluminio en Getafe y Madrid</h1>
+      <p class="lead">
+        Compramos aluminio de cualquier tipo: perfiles de ventanas, chapa, piezas
+        industriales o estructuras. Pesa poco pero, en cantidad, tiene buen valor.
+        Te lo recogemos en tu domicilio y te pagamos al momento.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, tengo aluminio para vender.')} data-track="whatsapp">
+          <Icon name="whatsapp" style="width:20px;height:20px" />
+          Pide precio del aluminio por WhatsApp
+        </a>
+        <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+          <Icon name="phone" style="width:20px;height:20px" />
+          Llamar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Qué aluminio compramos</span>
+        <h2>Perfiles, chapa y piezas de todo tipo</h2>
+        <p>Recogemos aluminio de reformas, obras y talleres, entre otros:</p>
+      </div>
+      <ul>
+        <li>Perfiles y marcos de ventanas y puertas antiguas</li>
+        <li>Chapa y planchas de aluminio</li>
+        <li>Llantas y piezas de automoción</li>
+        <li>Estructuras y piezas industriales</li>
+        <li>Cableado y componentes con aluminio</li>
+      </ul>
+      <p>
+        Es muy habitual que nos llame gente que está cambiando las ventanas viejas de
+        aluminio por unas nuevas de PVC o aluminio con rotura de puente térmico. Si es tu
+        caso, nos encargamos de retirar las ventanas viejas sin que tengas que hacer nada.
+      </p>
+      <p>
+        También compramos aluminio de objetos menos evidentes: escaleras, toldos,
+        canalones o bicicletas viejas, por ejemplo. Si no estás seguro de si algo es
+        aluminio, mándanos una foto y te lo confirmamos sin compromiso.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Proceso</span>
+        <h2>Cómo vendemos tu aluminio</h2>
+      </div>
+      <p>
+        Nos mandas fotos del aluminio que tienes por WhatsApp y nos cuentas la cantidad
+        aproximada. Te damos un precio orientativo antes de venir, según la cotización del
+        día, y quedamos contigo en Getafe o en cualquier zona donde trabajamos. Cargamos el
+        material, lo pesamos delante de ti si hace falta y te pagamos al momento, en
+        efectivo.
+      </p>
+      <p>
+        Si además del aluminio tienes otros materiales de la misma reforma u obra (hierro,
+        cobre, restos de instalaciones), también nos los llevamos en la misma visita, sin
+        que tengas que separarlos ni organizar varias recogidas.
+      </p>
+      <a href="/gestion-de-metales/">Ver el resto de metales que compramos →</a>
+      {' · '}
+      <a href="/precios-chatarra/">Cómo calculamos el precio →</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-final">
+        <h2>¿Tienes aluminio para vender?</h2>
+        <p style="margin-inline:auto">Mándanos fotos y te decimos el precio de hoy por WhatsApp.</p>
+        <div class="btn-row">
+          <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, tengo aluminio para vender.')} data-track="whatsapp">
+            <Icon name="whatsapp" style="width:20px;height:20px" />
+            Pide precio del aluminio
+          </a>
+          <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+            <Icon name="phone" style="width:20px;height:20px" />
+            Llamar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
