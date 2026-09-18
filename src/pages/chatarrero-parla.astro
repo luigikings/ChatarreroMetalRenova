@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import { site, whatsappLink } from '../config/site';
+
+const title = 'Chatarrero en Parla | MetalRenova';
+const description =
+  'Compra de chatarra y metales en Parla, con recogida a domicilio gratuita y pago inmediato. Cobre, aluminio, hierro y el resto de materiales.';
+
+const faqItems = [
+  {
+    question: '¿Con qué antelación tengo que avisar para una recogida en Parla?',
+    answer: 'No hace falta mucha antelación. Escríbenos por WhatsApp y te decimos si podemos ir el mismo día o cuál es el primer hueco disponible.',
+  },
+  {
+    question: '¿Qué pasa si al final el material pesa menos de lo que pensaba?',
+    answer: 'No hay problema, el precio final se calcula con el peso real en el momento de la recogida, sea mayor o menor de lo que habíamos hablado.',
+  },
+];
+---
+
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Chatarrero en Parla', path: '/chatarrero-parla/' }]}>
+  <Breadcrumbs items={[{ name: 'Chatarrero en Parla', path: '/chatarrero-parla/' }]} />
+
+  <section class="hero" style="padding-top:1rem">
+    <div class="container">
+      <span class="eyebrow">Parla</span>
+      <h1>Chatarrero en Parla</h1>
+      <p class="lead">
+        En Parla compramos chatarra y metales con el mismo proceso sencillo de siempre:
+        fotos por WhatsApp, precio orientativo y recogida en tu domicilio con pago
+        inmediato.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, estoy en Parla y tengo chatarra para vender.')} data-track="whatsapp">
+          <Icon name="whatsapp" style="width:20px;height:20px" />
+          Pide recogida en Parla
+        </a>
+        <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+          <Icon name="phone" style="width:20px;height:20px" />
+          Llamar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Servicio en Parla</span>
+        <h2>Qué compramos en Parla</h2>
+        <p>
+          Cobre, aluminio, hierro, latón, plomo, baterías y el resto de metales que
+          detallamos en <a href="/gestion-de-metales/">gestión de metales</a>. Si quieres
+          hacerte una idea de precio antes de escribirnos, echa un vistazo a
+          <a href="/precios-chatarra/">precios de la chatarra</a>.
+        </p>
+        <p>
+          También trabajamos en Parla en <a href="/vaciado-de-pisos-y-naves/">vaciados de
+          pisos, locales y naves</a>, si tu necesidad es liberar espacio en vez de vender
+          material suelto.
+        </p>
+      </div>
+      <p>[TODO-CLIENTE: si tenéis referencias concretas de Parla (barrios, zonas donde soléis trabajar), decídmelo y lo añado.]</p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <Faq items={faqItems} title="Preguntas sobre el servicio en Parla" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-final">
+        <h2>¿Tienes chatarra en Parla?</h2>
+        <p style="margin-inline:auto">Escríbenos por WhatsApp con fotos y te decimos el precio en minutos.</p>
+        <div class="btn-row">
+          <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, estoy en Parla y tengo chatarra para vender.')} data-track="whatsapp">
+            <Icon name="whatsapp" style="width:20px;height:20px" />
+            Pide recogida en Parla
+          </a>
+          <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+            <Icon name="phone" style="width:20px;height:20px" />
+            Llamar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

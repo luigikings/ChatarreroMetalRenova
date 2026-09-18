@@ -48,11 +48,11 @@ export const site = {
     { slug: 'getafe', name: 'Getafe', principal: true, page: '/chatarrero-getafe/' },
     { slug: 'leganes', name: 'Leganés', principal: false, page: '/chatarrero-leganes/' },
     { slug: 'fuenlabrada', name: 'Fuenlabrada', principal: false, page: '/chatarrero-fuenlabrada/' },
-    { slug: 'alcorcon', name: 'Alcorcón', principal: false, page: null },
-    { slug: 'mostoles', name: 'Móstoles', principal: false, page: null },
-    { slug: 'pinto', name: 'Pinto', principal: false, page: null },
-    { slug: 'parla', name: 'Parla', principal: false, page: null },
-    { slug: 'madrid', name: 'Madrid capital', principal: false, page: null },
+    { slug: 'alcorcon', name: 'Alcorcón', principal: false, page: '/chatarrero-alcorcon/' },
+    { slug: 'mostoles', name: 'Móstoles', principal: false, page: '/chatarrero-mostoles/' },
+    { slug: 'pinto', name: 'Pinto', principal: false, page: '/chatarrero-pinto/' },
+    { slug: 'parla', name: 'Parla', principal: false, page: '/chatarrero-parla/' },
+    { slug: 'madrid', name: 'Madrid capital', principal: false, page: '/chatarrero-madrid/' },
   ],
 
   materials: [

@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import { site, whatsappLink } from '../config/site';
+
+const title = 'Chatarrero en Móstoles | MetalRenova';
+const description =
+  'Recogida de chatarra y metales en Móstoles, con pago inmediato. Cobre, aluminio, hierro y chatarra pesada de naves y talleres, sin que te muevas.';
+
+const faqItems = [
+  {
+    question: '¿Vais a naves industriales en Móstoles, no solo a domicilios?',
+    answer: 'Sí. Además de particulares, trabajamos con naves, talleres y negocios de Móstoles que generan chatarra o necesitan un vaciado.',
+  },
+  {
+    question: '¿Podéis mover chatarra pesada, como estructuras o maquinaria?',
+    answer: 'Sí, contamos con vehículo y herramientas propias para cargar material pesado. Cuéntanos qué tienes y lo valoramos.',
+  },
+];
+---
+
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Chatarrero en Móstoles', path: '/chatarrero-mostoles/' }]}>
+  <Breadcrumbs items={[{ name: 'Chatarrero en Móstoles', path: '/chatarrero-mostoles/' }]} />
+
+  <section class="hero" style="padding-top:1rem">
+    <div class="container">
+      <span class="eyebrow">Móstoles</span>
+      <h1>Chatarrero en Móstoles</h1>
+      <p class="lead">
+        En Móstoles recogemos tanto chatarra de particulares como de talleres y naves.
+        Nos mandas fotos del material por WhatsApp y coordinamos la recogida en tu
+        domicilio o negocio.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, estoy en Móstoles y tengo chatarra para vender.')} data-track="whatsapp">
+          <Icon name="whatsapp" style="width:20px;height:20px" />
+          Pide recogida en Móstoles
+        </a>
+        <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+          <Icon name="phone" style="width:20px;height:20px" />
+          Llamar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Servicio en Móstoles</span>
+        <h2>De metales sueltos a vaciados completos</h2>
+        <p>
+          Compramos cobre, aluminio, hierro y acero, latón y el resto de materiales de
+          nuestra <a href="/gestion-de-metales/">gestión de metales</a>. Si el material es
+          pesado o viene de una nave o un taller, tenemos el vehículo y las herramientas
+          para encargarnos de la carga, como explicamos en
+          <a href="/compra-de-hierro-y-acero/">compra de hierro y acero</a>.
+        </p>
+        <p>
+          También hacemos <a href="/vaciado-de-pisos-y-naves/">vaciados de naves y
+          locales</a> en Móstoles si lo que necesitas es liberar el espacio entero, no
+          solo vender el metal suelto.
+        </p>
+      </div>
+      <p>[TODO-CLIENTE: si tenéis referencias concretas de Móstoles (barrios, polígonos donde soléis trabajar), decídmelo y lo añado.]</p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <Faq items={faqItems} title="Preguntas sobre el servicio en Móstoles" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-final">
+        <h2>¿Tienes chatarra en Móstoles?</h2>
+        <p style="margin-inline:auto">Escríbenos por WhatsApp con fotos y te decimos el precio en minutos.</p>
+        <div class="btn-row">
+          <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, estoy en Móstoles y tengo chatarra para vender.')} data-track="whatsapp">
+            <Icon name="whatsapp" style="width:20px;height:20px" />
+            Pide recogida en Móstoles
+          </a>
+          <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+            <Icon name="phone" style="width:20px;height:20px" />
+            Llamar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

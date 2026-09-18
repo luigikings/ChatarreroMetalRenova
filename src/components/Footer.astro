@@ -21,7 +21,7 @@ const year = new Date().getFullYear();
         <h3>Zonas donde trabajamos</h3>
         <ul>
           {site.zones.map((zone) => (
-            <li>{zone.page ? <a href={zone.page}>{zone.name}</a> : zone.name}</li>
+            <li><a href={zone.page}>{zone.name}</a></li>
           ))}
         </ul>
       </div>

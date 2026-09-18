@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import { site, whatsappLink } from '../config/site';
+
+const title = 'Chatarrero en Madrid capital | MetalRenova';
+const description =
+  'Compramos chatarra y metales en Madrid capital, con recogida a domicilio y pago inmediato. Cobre, aluminio, hierro y más, desde el sur de Madrid.';
+
+const faqItems = [
+  {
+    question: '¿Llegáis a cualquier zona de Madrid capital?',
+    answer: 'Trabajamos habitualmente en Madrid capital, aunque el tiempo de respuesta puede variar algo según la zona exacta. Escríbenos con tu dirección y te confirmamos disponibilidad.',
+  },
+  {
+    question: '¿El proceso es distinto al de Getafe o el resto de zonas?',
+    answer: 'No, es exactamente el mismo: fotos por WhatsApp, precio orientativo y recogida con pago al momento.',
+  },
+];
+---
+
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Chatarrero en Madrid capital', path: '/chatarrero-madrid/' }]}>
+  <Breadcrumbs items={[{ name: 'Chatarrero en Madrid capital', path: '/chatarrero-madrid/' }]} />
+
+  <section class="hero" style="padding-top:1rem">
+    <div class="container">
+      <span class="eyebrow">Madrid capital</span>
+      <h1>Chatarrero en Madrid capital</h1>
+      <p class="lead">
+        Desde nuestra base en Getafe, también damos servicio en Madrid capital. Nos mandas
+        fotos del material por WhatsApp y coordinamos el día para ir a recogerlo.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, estoy en Madrid capital y tengo chatarra para vender.')} data-track="whatsapp">
+          <Icon name="whatsapp" style="width:20px;height:20px" />
+          Pide recogida en Madrid
+        </a>
+        <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+          <Icon name="phone" style="width:20px;height:20px" />
+          Llamar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Servicio en Madrid capital</span>
+        <h2>Recogida de metales en toda la capital</h2>
+        <p>
+          Compramos los mismos materiales que en el resto de zonas: cobre, aluminio,
+          hierro, latón y más, detallados en <a href="/gestion-de-metales/">gestión de
+          metales</a>. Al ser una zona más grande, el tiempo de respuesta puede variar
+          algo según el barrio exacto, pero el proceso es idéntico al del resto de
+          nuestra <a href="/servicios/">zona de trabajo</a>.
+        </p>
+        <p>
+          Si tu necesidad es vaciar un piso, un local o una oficina en Madrid capital,
+          también hacemos <a href="/vaciado-de-pisos-y-naves/">vaciados completos</a>.
+        </p>
+      </div>
+      <p>[TODO-CLIENTE: si tenéis distritos o zonas concretas de Madrid capital donde soléis trabajar con más frecuencia, decídmelo y lo añado.]</p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <Faq items={faqItems} title="Preguntas sobre el servicio en Madrid capital" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-final">
+        <h2>¿Tienes chatarra en Madrid capital?</h2>
+        <p style="margin-inline:auto">Escríbenos por WhatsApp con fotos y te decimos el precio en minutos.</p>
+        <div class="btn-row">
+          <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, estoy en Madrid capital y tengo chatarra para vender.')} data-track="whatsapp">
+            <Icon name="whatsapp" style="width:20px;height:20px" />
+            Pide recogida en Madrid
+          </a>
+          <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+            <Icon name="phone" style="width:20px;height:20px" />
+            Llamar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

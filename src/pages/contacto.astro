@@ -66,7 +66,7 @@ const description =
           <h2>Dónde trabajamos</h2>
           <ul class="zone-list">
             {site.zones.map((zone) => (
-              zone.page ? <li><a href={zone.page}>{zone.name}</a></li> : <li>{zone.name}</li>
+              <li><a href={zone.page}>{zone.name}</a></li>
             ))}
           </ul>
         </div>

@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import { site, whatsappLink } from '../config/site';
+
+const title = 'Chatarrero en Alcorcón | MetalRenova';
+const description =
+  'Compra de chatarra y metales en Alcorcón, con recogida a domicilio y pago inmediato. Cobre, aluminio, hierro y más, desde nuestra base en Getafe.';
+
+const faqItems = [
+  {
+    question: '¿Recogéis chatarra en particulares y en talleres de Alcorcón?',
+    answer: 'Sí, trabajamos con los dos: particulares con material acumulado en casa y talleres o negocios que generan chatarra de forma habitual.',
+  },
+  {
+    question: '¿Puedo pedir la recogida para un fin de semana?',
+    answer: 'Coméntanoslo por WhatsApp y vemos disponibilidad. No siempre podemos, pero lo intentamos siempre que la agenda lo permite.',
+  },
+];
+---
+
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Chatarrero en Alcorcón', path: '/chatarrero-alcorcon/' }]}>
+  <Breadcrumbs items={[{ name: 'Chatarrero en Alcorcón', path: '/chatarrero-alcorcon/' }]} />
+
+  <section class="hero" style="padding-top:1rem">
+    <div class="container">
+      <span class="eyebrow">Alcorcón</span>
+      <h1>Chatarrero en Alcorcón</h1>
+      <p class="lead">
+        Compramos chatarra y metales en Alcorcón con el mismo proceso que en el resto de
+        nuestra zona: nos mandas fotos por WhatsApp, te decimos el precio y vamos a
+        recogerla a tu domicilio o negocio.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, estoy en Alcorcón y tengo chatarra para vender.')} data-track="whatsapp">
+          <Icon name="whatsapp" style="width:20px;height:20px" />
+          Pide recogida en Alcorcón
+        </a>
+        <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+          <Icon name="phone" style="width:20px;height:20px" />
+          Llamar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Servicio en Alcorcón</span>
+        <h2>Metales que compramos en Alcorcón</h2>
+        <p>
+          Cobre, aluminio, hierro, latón, baterías y el resto de materiales que puedes
+          consultar en <a href="/gestion-de-metales/">gestión de metales</a>. Si no sabes
+          cuánto puede valer lo que tienes, revisa <a href="/precios-chatarra/">cómo
+          calculamos el precio</a> antes de escribirnos.
+        </p>
+        <p>
+          Y si en vez de vender chatarra necesitas vaciar un piso, un local o una nave en
+          Alcorcón, échale un vistazo a nuestro servicio de
+          <a href="/vaciado-de-pisos-y-naves/">vaciados</a>.
+        </p>
+      </div>
+      <p>[TODO-CLIENTE: si tenéis referencias concretas de Alcorcón (barrios, polígonos donde soléis trabajar), decídmelo y lo añado.]</p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <Faq items={faqItems} title="Preguntas sobre el servicio en Alcorcón" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-final">
+        <h2>¿Tienes chatarra en Alcorcón?</h2>
+        <p style="margin-inline:auto">Escríbenos por WhatsApp con fotos y te decimos el precio en minutos.</p>
+        <div class="btn-row">
+          <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, estoy en Alcorcón y tengo chatarra para vender.')} data-track="whatsapp">
+            <Icon name="whatsapp" style="width:20px;height:20px" />
+            Pide recogida en Alcorcón
+          </a>
+          <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+            <Icon name="phone" style="width:20px;height:20px" />
+            Llamar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
