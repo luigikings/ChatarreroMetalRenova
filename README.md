@@ -1,136 +1,199 @@
-# MetalRenova — web
+# MetalRenova — Scrap Metal Business Website
 
-Web estática de [MetalRenova](https://chatarreriametalrenova.es), chatarrero en Getafe
-y el sur de Madrid. Hecha con [Astro](https://astro.build) en modo `static`: no hay
-backend, ni base de datos, ni formularios. El contacto es siempre por teléfono o
-WhatsApp.
+[![Astro](https://img.shields.io/badge/Astro-static-BC52EE?logo=astro&logoColor=white)](https://astro.build)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![No backend](https://img.shields.io/badge/backend-none-lightgrey)]()
+[![License](https://img.shields.io/badge/license-private-informational)]()
 
-## Cómo hacer el build
+🌐 **Live site:** [chatarreriametalrenova.es](https://chatarreriametalrenova.es)
 
-```bash
-npm install
-npm run build
-```
+> Read this in [English](#english) or [Español](#español).
 
-Esto genera la carpeta `dist/` con la web ya lista para subir (HTML, CSS, JS mínimo,
-fuentes, `robots.txt`, `sitemap-index.xml` y `.htaccess`). Puedes revisarla en local
-antes de subirla con:
+---
 
-```bash
-npm run preview
-```
+## English
 
-Y para desarrollar con recarga en caliente:
+### Overview
 
-```bash
-npm run dev
-```
+A full rebuild, from the ground up, of the website for **MetalRenova**, a
+scrap-metal collection business (chatarrero) operating in Getafe and the
+Madrid region, Spain. The previous site ran on WordPress; this version is a
+static site built with **Astro**, designed around three constraints: it had
+to be fast, it had to rank locally, and it had to ship with zero moving
+parts to maintain (no CMS, no database, no server-side code).
 
-## Qué subir a Hostinger
+The project covers the full scope of a small local-business site: 25 static
+pages (home, 6 material-specific landing pages, 8 city/zone landing pages,
+service pages, legal pages, and a custom 404), all driven from a single
+source-of-truth config file so business data (phone numbers, address,
+hours, service areas) never has to be edited in more than one place.
 
-**Todo el contenido de `dist/`** (no la carpeta `dist/` en sí, sino lo que hay dentro)
-va directo a `public_html/` por FTP o por el Administrador de archivos de Hostinger.
-Incluye el archivo `.htaccess`: asegúrate de que tu cliente FTP muestre los archivos
-ocultos (los que empiezan por punto) para no dejarlo fuera.
+### Key features
 
-Si `public_html/` ya tiene una versión antigua de la web (la de WordPress), bórrala
-entera antes de subir la nueva — no deben quedar archivos PHP ni carpetas de
-WordPress mezclados con esta web estática.
+- **Static output, zero backend** — `astro build` produces plain HTML/CSS/JS.
+  No database, no API routes, no contact forms (all contact happens through
+  `tel:` links and pre-filled WhatsApp deep links).
+- **Performance budget enforced by design** — CSS and JS are hand-written,
+  no UI framework or component library; fonts (Inter, Barlow Condensed) are
+  self-hosted as subset `.woff2` files instead of pulled from Google Fonts.
+- **Local SEO built in** — per-page `<title>`/meta description, canonical
+  URLs, `LocalBusiness` and `BreadcrumbList` JSON-LD structured data, an
+  auto-generated XML sitemap (`@astrojs/sitemap`), and eight dedicated
+  landing pages for the towns the business actually serves.
+- **Image pipeline** — real business photos processed through Astro's
+  built-in `<Image>` component (automatic `WebP` conversion, explicit
+  dimensions, lazy loading); favicons and the Open Graph share image were
+  generated from the client's real logo with Sharp and Playwright.
+- **Accessible dark theme** — a custom dark palette (cyan/copper accents on
+  a near-black background) with contrast ratios checked against WCAG AA.
+- **Deployment-ready for shared hosting** — ships its own `.htaccess`
+  (HTTPS + non-www redirect, compression, cache headers, security headers)
+  so it can be dropped straight into an Apache/LiteSpeed host like
+  Hostinger, replacing a WordPress install with static files only.
 
-## Cómo cambiar los datos del negocio
+### Tech stack
 
-Casi todo el sitio (teléfonos, WhatsApp, dirección, horario, zonas, enlace a Google)
-sale de un único archivo:
+| Layer       | Choice                                             |
+| ----------- | --------------------------------------------------- |
+| Framework   | [Astro](https://astro.build) (static output, `astro build`) |
+| Language    | TypeScript, `.astro` components                     |
+| Styling     | Hand-written CSS (custom properties / design tokens), no framework |
+| Images      | `astro:assets`, Sharp (favicons), Playwright (OG image render) |
+| SEO         | `@astrojs/sitemap`, JSON-LD (LocalBusiness, BreadcrumbList) |
+| Hosting     | Static files on shared hosting (Apache/LiteSpeed), via `.htaccess` |
 
-**`src/config/site.ts`**
-
-Cambia el valor que necesites (por ejemplo `phonePrimary`) y vuelve a hacer
-`npm run build`. No hace falta tocar ningún otro archivo — el header, el footer, los
-botones de WhatsApp y el schema de Google leen todos de aquí.
-
-## Cómo cambiar los precios
-
-**`src/data/precios.json`**
-
-Cada material tiene `precio_desde` y `precio_hasta`. Si están en `null` (como ahora),
-la web muestra "Consúltanos por WhatsApp". Para publicar un precio real, pon los dos
-números, por ejemplo:
-
-```json
-{ "material": "Cobre", "slug": "cobre", "precio_desde": 5, "precio_hasta": 6.5, "pagina": "/compra-de-cobre/" }
-```
-
-Actualiza también el campo `"actualizado"` de arriba del todo con la fecha del día.
-Este archivo alimenta la home, `/precios-chatarra/` y `/gestion-de-metales/` a la vez.
-
-## Estructura del proyecto
+### Project structure
 
 ```
 src/
-  config/site.ts       ← datos del negocio (fuente única)
-  data/precios.json    ← precios de los materiales
-  layouts/Layout.astro ← plantilla base (SEO, header, footer, barra móvil)
-  components/          ← Header, Footer, Icon, Faq, Breadcrumbs, etc.
-  pages/                ← una página por archivo .astro = una URL
-  styles/global.css    ← todo el CSS del sitio (sin librerías)
+  config/site.ts       ← single source of truth for business data
+  data/precios.json    ← material prices (optional, falls back to "ask us")
+  layouts/Layout.astro ← base template: SEO head, header, footer, mobile CTA bar
+  components/          ← Header, Footer, Logo, Faq, Breadcrumbs, OtherZones, etc.
+  pages/                ← one .astro file = one route (25 pages total)
+  styles/global.css    ← all site CSS, no external UI library
 public/
-  fonts/                ← Inter y Barlow Condensed en .woff2, autoalojadas
-  .htaccess             ← config de Apache/LiteSpeed (se copia a dist/ tal cual)
+  fonts/                ← self-hosted Inter & Barlow Condensed (.woff2)
+  .htaccess             ← Apache/LiteSpeed config, copied into the build output
   robots.txt
-  favicon.svg
 ```
 
-## Pendientes del cliente (TODO-CLIENTE)
+### Getting started
 
-Busca `TODO-CLIENTE` en el código (`grep -rn "TODO-CLIENTE" src/`) para encontrarlos
-todos marcados en contexto. Resumen de lo que queda:
+```bash
+npm install
+npm run dev       # local dev server with hot reload
+npm run build     # outputs the static site to dist/
+npm run preview   # serve the production build locally
+```
 
-- **Email de contacto**, si queréis mostrarlo en la web (`site.ts` → `email`).
-- **Nº de autorización como gestor de residuos**, si lo tenéis (`site.ts` →
-  `wasteManagerAuthNumber`). Si lo rellenas, aparece automáticamente en el pie y en
-  el aviso legal; si no, esas frases no se muestran.
-- **Una foto de un vaciado de local u oficina** para completar la galería de
-  "Nuestros trabajos" (las otras dos ya están puestas).
-- **Barrios o polígonos concretos** de las 8 zonas, si soléis trabajar en sitios
-  específicos — ayuda al SEO local. Ya hay página propia para las 8 zonas
-  (Getafe, Leganés, Fuenlabrada, Alcorcón, Móstoles, Pinto, Parla y Madrid capital).
-- **Reseñas reales de Google**: no se ha podido acceder a Google desde este
-  entorno para copiarlas automáticamente. Manda una captura de pantalla de las
-  reseñas (o el texto tal cual) y se transcriben literalmente, con enlace a tu
-  ficha de Google — nunca se inventa ninguna.
+Business details (phone numbers, address, opening hours, service areas,
+WhatsApp link) live in `src/config/site.ts` — every page, the header,
+footer, and structured data all read from that single file.
 
-La razón social, el NIF/CIF y el resto de datos legales que no se han dado se
-han omitido directamente del aviso legal y la política de privacidad (en vez de
-dejar un hueco a rellenar), para que esas páginas ya se puedan publicar tal cual.
+### About this project
 
-## Si en el futuro añadís Google Ads / Analytics
+Built end-to-end (planning, UI, copy, SEO, and deployment) as a real
+client project. No statistics, reviews, or claims appear anywhere on the
+site unless they were explicitly confirmed by the business owner or
+verified from a real source (e.g. Google Business Profile reviews,
+transcribed verbatim with a link back to the original listing).
 
-Ahora mismo la web no carga ningún script de terceros ni usa cookies de
-seguimiento, así que no hace falta banner de cookies. El día que añadáis el tag de
-Google Ads (la ficha antigua tenía uno, `AW-18121827018`) o Analytics, hace falta:
+---
 
-1. Añadir un banner de consentimiento de cookies antes de cargar el script.
-2. Crear la página `/politica-de-cookies/` (ya está reservada en el mapa de URLs).
-3. Enlazarla desde el pie de página junto a Aviso legal y Privacidad.
+## Español
 
-## Checklist post-lanzamiento
+### Descripción general
 
-- [ ] Confirmar que `https://chatarreriametalrenova.es` carga bien (sin `www`, con
-      candado HTTPS).
-- [ ] Probar que `http://` y `https://www...` redirigen automáticamente a la versión
-      buena (lo hace el `.htaccess`).
-- [ ] Dar de alta la propiedad en **Google Search Console** (si no lo estaba ya) y
-      enviar el nuevo sitemap: `https://chatarreriametalrenova.es/sitemap-index.xml`.
-- [ ] Pedir la **reindexación** de las páginas principales desde Search Console.
-- [ ] Revisar en Search Console que no haya errores 404 de páginas antiguas que ya
-      no existan.
-- [ ] Comprobar a mano las URLs que ya estaban indexadas: `/`, `/contacto/`,
-      `/mudanzas/`, `/nuestros-trabajos/`, `/como-funciona/`, `/gestion-de-metales/`,
-      `/servicios/` — todas deben responder con 200, no con 404 ni redirecciones raras.
-- [ ] Vaciar la caché de Hostinger/LiteSpeed (y la del navegador) tras subir los
-      archivos, para no seguir viendo la web vieja.
-- [ ] Comprobar los botones de llamar y WhatsApp desde un móvil real.
-- [ ] Revisar la ficha de Google Business Profile: que el teléfono y la dirección
-      coincidan exactamente con los de la web.
-- [ ] Pasar la web por PageSpeed Insights (móvil) para confirmar que el LCP baja de
-      los 9,5 s que tenía la web anterior.
+Reconstrucción completa, desde cero, de la web de **MetalRenova**, un
+negocio de compra y recogida de chatarra (chatarrero) que opera en Getafe y
+la zona sur de Madrid. La web anterior estaba hecha en WordPress; esta
+versión es un sitio estático construido con **Astro**, pensado alrededor de
+tres condiciones: tenía que ser rápida, tenía que posicionar bien a nivel
+local, y tenía que funcionar sin ninguna pieza que mantener (sin CMS, sin
+base de datos, sin código de servidor).
+
+El proyecto cubre el alcance completo de una web de negocio local: 25
+páginas estáticas (home, 6 páginas específicas por material, 8 páginas de
+zona/ciudad, páginas de servicios, páginas legales y un 404 personalizado),
+todo controlado desde un único archivo de configuración para que los datos
+del negocio (teléfonos, dirección, horario, zonas de servicio) nunca haya
+que tocarlos en más de un sitio.
+
+### Características principales
+
+- **Salida estática, sin backend** — `astro build` genera HTML/CSS/JS
+  planos. Sin base de datos, sin rutas de API, sin formularios de contacto
+  (todo el contacto se hace por enlaces `tel:` y enlaces directos de
+  WhatsApp con mensaje precargado).
+- **Presupuesto de rendimiento por diseño** — el CSS y el JS están escritos
+  a mano, sin framework de UI ni librería de componentes; las fuentes
+  (Inter, Barlow Condensed) están autoalojadas como `.woff2` en vez de
+  cargarse desde Google Fonts.
+- **SEO local integrado** — `<title>` y meta description por página, URLs
+  canónicas, datos estructurados JSON-LD (`LocalBusiness` y
+  `BreadcrumbList`), sitemap XML autogenerado (`@astrojs/sitemap`), y ocho
+  páginas de aterrizaje dedicadas a las ciudades donde realmente trabaja
+  el negocio.
+- **Pipeline de imágenes** — fotos reales del negocio procesadas con el
+  componente `<Image>` de Astro (conversión automática a `WebP`,
+  dimensiones explícitas, carga diferida); los favicons y la imagen de
+  vista previa para redes sociales (Open Graph) se generaron a partir del
+  logo real del cliente con Sharp y Playwright.
+- **Tema oscuro accesible** — paleta oscura personalizada (acentos cian y
+  cobre sobre fondo casi negro) con los contrastes comprobados contra el
+  estándar WCAG AA.
+- **Lista para desplegar en hosting compartido** — incluye su propio
+  `.htaccess` (redirección a HTTPS sin `www`, compresión, cabeceras de
+  caché, cabeceras de seguridad) para poder subirla directamente a un
+  hosting Apache/LiteSpeed como Hostinger, sustituyendo una instalación de
+  WordPress por archivos puramente estáticos.
+
+### Stack tecnológico
+
+| Capa        | Elección                                            |
+| ----------- | ---------------------------------------------------- |
+| Framework   | [Astro](https://astro.build) (salida estática, `astro build`) |
+| Lenguaje    | TypeScript, componentes `.astro`                     |
+| Estilos     | CSS escrito a mano (custom properties / design tokens), sin framework |
+| Imágenes    | `astro:assets`, Sharp (favicons), Playwright (render de la imagen OG) |
+| SEO         | `@astrojs/sitemap`, JSON-LD (LocalBusiness, BreadcrumbList) |
+| Hosting     | Archivos estáticos en hosting compartido (Apache/LiteSpeed), vía `.htaccess` |
+
+### Estructura del proyecto
+
+```
+src/
+  config/site.ts       ← fuente única de datos del negocio
+  data/precios.json    ← precios de materiales (opcional, si no hay dato muestra "consúltanos")
+  layouts/Layout.astro ← plantilla base: SEO, header, footer, barra CTA móvil
+  components/          ← Header, Footer, Logo, Faq, Breadcrumbs, OtherZones, etc.
+  pages/                ← un archivo .astro = una URL (25 páginas en total)
+  styles/global.css    ← todo el CSS del sitio, sin librería externa
+public/
+  fonts/                ← Inter y Barlow Condensed autoalojadas (.woff2)
+  .htaccess             ← configuración de Apache/LiteSpeed, se copia al build
+  robots.txt
+```
+
+### Cómo arrancar el proyecto
+
+```bash
+npm install
+npm run dev       # servidor local con recarga en caliente
+npm run build     # genera la web estática en dist/
+npm run preview   # sirve en local el build de producción
+```
+
+Los datos del negocio (teléfonos, dirección, horario, zonas de servicio,
+enlace de WhatsApp) viven en `src/config/site.ts` — todas las páginas, el
+header, el footer y los datos estructurados leen de ese único archivo.
+
+### Sobre este proyecto
+
+Desarrollado de principio a fin (planificación, interfaz, textos, SEO y
+despliegue) como proyecto real para un cliente. En ningún punto de la web
+aparecen estadísticas, reseñas o afirmaciones que no hayan sido confirmadas
+explícitamente por el propietario del negocio o verificadas desde una
+fuente real (por ejemplo, las reseñas de Google Business Profile están
+transcritas de forma literal, con enlace a la ficha original).
