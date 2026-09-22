@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site } from '../config/site';
+
+const title = 'Política de cookies | MetalRenova';
+const description = 'Qué cookies usa la web de MetalRenova y para qué sirven.';
+---
+
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Política de cookies', path: '/politica-de-cookies/' }]}>
+  <Breadcrumbs items={[{ name: 'Política de cookies', path: '/politica-de-cookies/' }]} />
+
+  <section class="section" style="padding-top:1rem">
+    <div class="container">
+      <h1>Política de cookies</h1>
+
+      <h2>Qué cookies usamos</h2>
+      <p>
+        Esta web solo usa una cookie técnica de medición: cuando aceptas el aviso que
+        aparece al entrar, guardamos que has llamado o escrito por WhatsApp desde un
+        anuncio de Google, para saber si nuestra publicidad está funcionando. No usamos
+        cookies de publicidad de terceros, ni de redes sociales, ni vendemos tus datos a
+        nadie.
+      </p>
+
+      <h2>Cómo decides</h2>
+      <p>
+        Puedes aceptar o rechazar esta cookie en el aviso que aparece la primera vez que
+        entras en la web. Si la rechazas, la web funciona exactamente igual: la cookie
+        solo nos ayuda a nosotros a medir la publicidad, no cambia nada de lo que ves.
+      </p>
+      <p>
+        Para cambiar tu decisión, borra los datos de este sitio desde los ajustes de tu
+        navegador y vuelve a cargar la página: el aviso volverá a aparecer.
+      </p>
+
+      <h2>Responsable</h2>
+      <p>
+        {site.name}<br />
+        Domicilio: {site.address.street}, {site.address.postalCode} {site.address.city}, {site.address.region}
+      </p>
+    </div>
+  </section>
+</Layout>

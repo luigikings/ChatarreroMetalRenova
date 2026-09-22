@@ -1,0 +1,77 @@
+---
+import { site } from '../config/site';
+
+const conversionId = site.googleAdsConversion.id;
+const conversionLabel = site.googleAdsConversion.label;
+---
+
+<div id="cookie-consent" class="cookie-consent">
+  <div class="container cookie-consent__inner">
+    <p class="cookie-consent__text">
+      Usamos una cookie técnica para saber qué llamadas y mensajes de WhatsApp llegan
+      desde nuestros anuncios de Google. No usamos cookies de publicidad de terceros ni
+      vendemos tus datos. <a href="/politica-de-cookies/">Más información</a>.
+    </p>
+    <div class="cookie-consent__actions">
+      <button id="cookie-reject" type="button" class="btn btn--call">Rechazar</button>
+      <button id="cookie-accept" type="button" class="btn btn--cyan">Aceptar</button>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ conversionId, conversionLabel }}>
+  const STORAGE_KEY = 'mr-cookie-consent';
+  const banner = document.getElementById('cookie-consent');
+
+  function getConsent() {
+    try { return localStorage.getItem(STORAGE_KEY); } catch { return null; }
+  }
+  function setConsent(value) {
+    try { localStorage.setItem(STORAGE_KEY, value); } catch { /* Safari privado, etc. */ }
+  }
+
+  function loadGoogleAdsTag() {
+    if (!conversionId || window.__mrAdsLoaded) return;
+    window.__mrAdsLoaded = true;
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${conversionId}`;
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function gtag() { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', conversionId);
+  }
+
+  function trackContactClick(kind) {
+    if (!window.gtag || !conversionId || !conversionLabel) return;
+    window.gtag('event', 'conversion', {
+      send_to: `${conversionId}/${conversionLabel}`,
+      event_category: kind,
+    });
+  }
+
+  // Cualquier botón de "Llamar" o "WhatsApp" del sitio lleva data-track="llamar|whatsapp".
+  document.addEventListener('click', (event) => {
+    const target = event.target.closest('[data-track]');
+    if (!target) return;
+    if (getConsent() === 'accepted') trackContactClick(target.dataset.track);
+  });
+
+  const consent = getConsent();
+  if (consent === 'accepted') {
+    loadGoogleAdsTag();
+  } else if (consent !== 'rejected') {
+    banner?.classList.add('is-visible');
+  }
+
+  document.getElementById('cookie-accept')?.addEventListener('click', () => {
+    setConsent('accepted');
+    loadGoogleAdsTag();
+    banner?.classList.remove('is-visible');
+  });
+  document.getElementById('cookie-reject')?.addEventListener('click', () => {
+    setConsent('rejected');
+    banner?.classList.remove('is-visible');
+  });
+</script>

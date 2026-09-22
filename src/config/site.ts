@@ -42,6 +42,16 @@ export const site = {
 
   wasteManagerAuthNumber: '', // vacío: al rellenarlo aparece solo en el pie y el aviso legal
 
+  // Seguimiento de conversiones de Google Ads para los clics en "Llamar" y "WhatsApp".
+  // Sácalo de Google Ads: Herramientas y configuración → Conversiones → clic en la
+  // acción "Contactos" → Configuración de la etiqueta → "Instalarla usted mismo".
+  // id es el "ID de conversión" (AW-XXXXXXXXX) y label la parte que va después de la
+  // barra en "Etiqueta de conversión". Mientras estén vacíos, no se carga ningún script.
+  googleAdsConversion: {
+    id: '', // TODO-CLIENTE: AW-XXXXXXXXX
+    label: '', // TODO-CLIENTE
+  },
+
   zones: [
     { slug: 'getafe', name: 'Getafe', principal: true, page: '/chatarrero-getafe/' },
     { slug: 'leganes', name: 'Leganés', principal: false, page: '/chatarrero-leganes/' },
