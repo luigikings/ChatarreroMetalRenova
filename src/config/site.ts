@@ -48,8 +48,8 @@ export const site = {
   // id es el "ID de conversión" (AW-XXXXXXXXX) y label la parte que va después de la
   // barra en "Etiqueta de conversión". Mientras estén vacíos, no se carga ningún script.
   googleAdsConversion: {
-    id: '', // TODO-CLIENTE: AW-XXXXXXXXX
-    label: '', // TODO-CLIENTE
+    id: 'AW-18121827018',
+    label: 'LnhWCKSCzIEdEMrFlMFD',
   },
 
   zones: [
