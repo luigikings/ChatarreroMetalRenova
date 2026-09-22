@@ -52,6 +52,12 @@ export const site = {
     label: 'LnhWCKSCzIEdEMrFlMFD',
   },
 
+  // Google Analytics 4 (Administrar → Flujos de datos → flujo Web → "ID de medición").
+  // Mide TODOS los clics en "Llamar"/"WhatsApp", vengan o no de un anuncio de pago —
+  // a diferencia de la conversión de Google Ads de arriba, que solo cuenta las que
+  // vienen del anuncio.
+  googleAnalyticsId: 'G-G63FSBJNTX',
+
   zones: [
     { slug: 'getafe', name: 'Getafe', principal: true, page: '/chatarrero-getafe/' },
     { slug: 'leganes', name: 'Leganés', principal: false, page: '/chatarrero-leganes/' },

@@ -3,6 +3,7 @@ import { site } from '../config/site';
 
 const conversionId = site.googleAdsConversion.id;
 const conversionLabel = site.googleAdsConversion.label;
+const analyticsId = site.googleAnalyticsId;
 ---
 
 <div id="cookie-consent" class="cookie-consent">
@@ -19,7 +20,7 @@ const conversionLabel = site.googleAdsConversion.label;
   </div>
 </div>
 
-<script define:vars={{ conversionId, conversionLabel }}>
+<script define:vars={{ conversionId, conversionLabel, analyticsId }}>
   const STORAGE_KEY = 'mr-cookie-consent';
   const banner = document.getElementById('cookie-consent');
 
@@ -30,25 +31,34 @@ const conversionLabel = site.googleAdsConversion.label;
     try { localStorage.setItem(STORAGE_KEY, value); } catch { /* Safari privado, etc. */ }
   }
 
-  function loadGoogleAdsTag() {
-    if (!conversionId || window.__mrAdsLoaded) return;
-    window.__mrAdsLoaded = true;
+  function loadGoogleTags() {
+    const tagId = conversionId || analyticsId;
+    if (!tagId || window.__mrTagsLoaded) return;
+    window.__mrTagsLoaded = true;
     const script = document.createElement('script');
     script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${conversionId}`;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${tagId}`;
     document.head.appendChild(script);
     window.dataLayer = window.dataLayer || [];
     window.gtag = function gtag() { window.dataLayer.push(arguments); };
     window.gtag('js', new Date());
-    window.gtag('config', conversionId);
+    if (conversionId) window.gtag('config', conversionId);
+    if (analyticsId) window.gtag('config', analyticsId);
   }
 
   function trackContactClick(kind) {
-    if (!window.gtag || !conversionId || !conversionLabel) return;
-    window.gtag('event', 'conversion', {
-      send_to: `${conversionId}/${conversionLabel}`,
-      event_category: kind,
-    });
+    if (!window.gtag) return;
+    // Conversión de Google Ads: solo cuenta si la visita viene de un anuncio de pago.
+    if (conversionId && conversionLabel) {
+      window.gtag('event', 'conversion', {
+        send_to: `${conversionId}/${conversionLabel}`,
+        event_category: kind,
+      });
+    }
+    // Evento de Google Analytics: cuenta TODOS los clics, venga la visita de donde venga.
+    if (analyticsId) {
+      window.gtag('event', 'contacto_click', { method: kind });
+    }
   }
 
   // Cualquier botón de "Llamar" o "WhatsApp" del sitio lleva data-track="llamar|whatsapp".
@@ -60,14 +70,14 @@ const conversionLabel = site.googleAdsConversion.label;
 
   const consent = getConsent();
   if (consent === 'accepted') {
-    loadGoogleAdsTag();
+    loadGoogleTags();
   } else if (consent !== 'rejected') {
     banner?.classList.add('is-visible');
   }
 
   document.getElementById('cookie-accept')?.addEventListener('click', () => {
     setConsent('accepted');
-    loadGoogleAdsTag();
+    loadGoogleTags();
     banner?.classList.remove('is-visible');
   });
   document.getElementById('cookie-reject')?.addEventListener('click', () => {
