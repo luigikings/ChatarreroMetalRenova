@@ -1,0 +1,20 @@
+---
+import { site } from '../config/site';
+
+interface Props {
+  heading: string;
+  current?: string;
+}
+const { heading, current } = Astro.props;
+const materials = site.materials.filter((m) => m.slug !== current);
+---
+<div class="section-head">
+  <span class="eyebrow">Materiales</span>
+  <h2>{heading}</h2>
+</div>
+<ul class="zone-list">
+  {materials.map((m) => (
+    <li><a href={m.page}>{m.name}</a></li>
+  ))}
+  <li><a href="/gestion-de-metales/">Otros metales</a></li>
+</ul>

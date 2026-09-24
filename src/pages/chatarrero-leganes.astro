@@ -2,13 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import MaterialLinks from '../components/MaterialLinks.astro';
 import Faq from '../components/Faq.astro';
 import OtherZones from '../components/OtherZones.astro';
 import { site, whatsappLink } from '../config/site';
 
-const title = 'Chatarrero en Leganés | MetalRenova';
+const title = 'Chatarrería y chatarrero en Leganés | MetalRenova';
 const description =
-  'Recogida de chatarra a domicilio en Leganés, con pago inmediato. Cobre, aluminio, hierro y más metales, desde nuestra base en el sur de Madrid.';
+  'Recogida de chatarra a domicilio en Leganés, con pago inmediato. Cobre, aluminio, hierro y más metales, desde nuestra base en Getafe.';
 
 const faqItems = [
   {
@@ -28,7 +29,7 @@ const faqItems = [
   <section class="hero hero--cyan" style="padding-top:1rem">
     <div class="container">
       <span class="eyebrow">Leganés</span>
-      <h1>Chatarrero en Leganés</h1>
+      <h1>Chatarrería y chatarrero en Leganés</h1>
       <p class="lead">
         Leganés está a un paso de Getafe, donde tenemos nuestra base, así que forma parte
         de nuestra zona habitual de recogidas. Nos mandas fotos de tu material y coordinamos
@@ -54,7 +55,7 @@ const faqItems = [
         <h2>Compra de metales y recogida a domicilio</h2>
         <p>
           En Leganés recogemos los mismos materiales que en el resto de nuestra zona:
-          cobre, aluminio, hierro, latón y el resto de metales que puedes consultar en
+          cobre, aluminio, hierro, latón y el resto de metales que puedes consultar en{' '}
           <a href="/gestion-de-metales/">gestión de metales</a>. El proceso es siempre el
           mismo: fotos por WhatsApp, precio orientativo y recogida con pago al momento,
           tal y como explicamos en <a href="/como-funciona/">cómo funciona</a>.
@@ -71,6 +72,12 @@ const faqItems = [
   <section class="section section--alt">
     <div class="container">
       <Faq items={faqItems} title="Preguntas sobre el servicio en Leganés" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <MaterialLinks heading="Materiales que recogemos en Leganés" />
     </div>
   </section>
 

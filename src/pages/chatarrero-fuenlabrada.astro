@@ -2,11 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import MaterialLinks from '../components/MaterialLinks.astro';
 import Faq from '../components/Faq.astro';
 import OtherZones from '../components/OtherZones.astro';
 import { site, whatsappLink } from '../config/site';
 
-const title = 'Chatarrero en Fuenlabrada | MetalRenova';
+const title = 'Chatarrería y chatarrero en Fuenlabrada | MetalRenova';
 const description =
   'Compramos chatarra y metales en Fuenlabrada, con recogida a domicilio y pago inmediato. Cobre, aluminio, hierro y más, sin que te muevas de casa.';
 
@@ -28,9 +29,9 @@ const faqItems = [
   <section class="hero hero--cyan" style="padding-top:1rem">
     <div class="container">
       <span class="eyebrow">Fuenlabrada</span>
-      <h1>Chatarrero en Fuenlabrada</h1>
+      <h1>Chatarrería y chatarrero en Fuenlabrada</h1>
       <p class="lead">
-        Fuenlabrada forma parte de nuestra zona de trabajo habitual en el sur de Madrid.
+        Fuenlabrada es una de las zonas donde más trabajamos, cerca de nuestra base en Getafe.
         Si tienes chatarra o metales acumulados, nos mandas unas fotos por WhatsApp y
         coordinamos la recogida en tu domicilio, taller o nave.
       </p>
@@ -71,6 +72,12 @@ const faqItems = [
   <section class="section section--alt">
     <div class="container">
       <Faq items={faqItems} title="Preguntas sobre el servicio en Fuenlabrada" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <MaterialLinks heading="Materiales que recogemos en Fuenlabrada" />
     </div>
   </section>
 

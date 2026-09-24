@@ -9,8 +9,8 @@ const year = new Date().getFullYear();
       <div>
         <h3>MetalRenova</h3>
         <p>
-          Chatarrero en Getafe y todo Madrid. Recogida de chatarra a domicilio
-          con pago inmediato, y vaciado de pisos, locales y naves.
+          Chatarrería y chatarrero en todo Madrid desde {site.foundingYear}. Recogida de
+          chatarra a domicilio con pago inmediato, y vaciado de pisos, locales y naves.
         </p>
         {site.wasteManagerAuthNumber && (
           <p>Nº autorización gestor de residuos: {site.wasteManagerAuthNumber}</p>
@@ -23,6 +23,17 @@ const year = new Date().getFullYear();
           {site.zones.map((zone) => (
             <li><a href={zone.page}>{zone.name}</a></li>
           ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3>Qué compramos</h3>
+        <ul>
+          {site.materials.map((m) => (
+            <li><a href={m.page}>{m.name}</a></li>
+          ))}
+          <li><a href="/gestion-de-metales/">Otros metales</a></li>
+          <li><a href="/precios-chatarra/">Precios de la chatarra</a></li>
         </ul>
       </div>
 
@@ -40,8 +51,7 @@ const year = new Date().getFullYear();
     <div class="footer-bottom">
       <span>&copy; {year} {site.name} — {site.tagline}</span>
       <span>
-        <a href="/aviso-legal/">Aviso legal</a> · <a href="/politica-de-privacidad/">Privacidad</a> ·
-        <a href="/politica-de-cookies/">Cookies</a>
+        <a href="/aviso-legal/">Aviso legal</a> · <a href="/politica-de-privacidad/">Privacidad</a> · <a href="/politica-de-cookies/">Cookies</a>
       </span>
     </div>
   </div>

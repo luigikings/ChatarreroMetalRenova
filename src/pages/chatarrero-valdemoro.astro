@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import MaterialLinks from '../components/MaterialLinks.astro';
+import Faq from '../components/Faq.astro';
+import OtherZones from '../components/OtherZones.astro';
+import { site, whatsappLink } from '../config/site';
+
+const title = 'Chatarrería y chatarrero en Valdemoro | MetalRenova';
+const description =
+  'Recogida de chatarra y metales a domicilio en Valdemoro, con pago inmediato. Cobre, aluminio, hierro y más. Te damos el precio antes por WhatsApp.';
+
+const faqItems = [
+  {
+    question: '¿Cómo sé cuánto me vais a pagar antes de venir a Valdemoro?',
+    answer: 'Nos mandas unas fotos por WhatsApp y te damos un precio orientativo. El precio final se calcula con el peso real, pesando el material delante de ti.',
+  },
+  {
+    question: '¿Recogéis en naves y locales, o solo en casas?',
+    answer: 'En los dos. Recogemos en viviendas, garajes, locales, talleres y naves. Si hay mucho material, mándanos fotos para organizar bien la recogida.',
+  },
+];
+---
+
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Chatarrero en Valdemoro', path: '/chatarrero-valdemoro/' }]}>
+  <Breadcrumbs items={[{ name: 'Chatarrero en Valdemoro', path: '/chatarrero-valdemoro/' }]} />
+
+  <section class="hero hero--cyan" style="padding-top:1rem">
+    <div class="container">
+      <span class="eyebrow">Valdemoro</span>
+      <h1>Chatarrería y chatarrero en Valdemoro</h1>
+      <p class="lead">
+        Desde nuestra base en Getafe llegamos a Valdemoro por la A-4 sin complicaciones.
+        Si tienes chatarra en casa, en un garaje o en una nave, nos mandas unas fotos por
+        WhatsApp y coordinamos la recogida con pago en el momento.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, estoy en Valdemoro y tengo chatarra para vender.')} data-track="whatsapp">
+          <Icon name="whatsapp" style="width:20px;height:20px" />
+          Pide recogida en Valdemoro
+        </a>
+        <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+          <Icon name="phone" style="width:20px;height:20px" />
+          Llamar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Servicio en Valdemoro</span>
+        <h2>Qué compramos en Valdemoro</h2>
+        <p>
+          Compramos cobre, aluminio, hierro, latón, baterías y el resto de metales que
+          detallamos en <a href="/gestion-de-metales/">gestión de metales</a>. Para hacerte
+          una idea de cómo calculamos lo que pagamos, mira{' '}
+          <a href="/precios-chatarra/">precios de la chatarra</a>.
+        </p>
+        <p>
+          Si en vez de vender material suelto necesitas dejar libre una vivienda, un local o
+          una nave, en Valdemoro también hacemos{' '}
+          <a href="/vaciado-de-pisos-y-naves/">vaciados completos</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <Faq items={faqItems} title="Preguntas sobre el servicio en Valdemoro" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <MaterialLinks heading="Materiales que recogemos en Valdemoro" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <OtherZones current="valdemoro" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-final">
+        <h2>¿Tienes chatarra en Valdemoro?</h2>
+        <p style="margin-inline:auto">Escríbenos por WhatsApp con fotos y te decimos el precio en minutos.</p>
+        <div class="btn-row">
+          <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, estoy en Valdemoro y tengo chatarra para vender.')} data-track="whatsapp">
+            <Icon name="whatsapp" style="width:20px;height:20px" />
+            Pide recogida en Valdemoro
+          </a>
+          <a class="btn btn--call" href={`tel:${site.phonePrimaryTel}`} data-track="llamar">
+            <Icon name="phone" style="width:20px;height:20px" />
+            Llamar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

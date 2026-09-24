@@ -2,11 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import MaterialLinks from '../components/MaterialLinks.astro';
 import { site, whatsappLink } from '../config/site';
 
 const title = 'Compra de baterías usadas en Madrid | MetalRenova';
 const description =
-  'Compramos baterías usadas de coche, moto y maquinaria en Getafe y el sur de Madrid. Recogida a domicilio sin coste y pago inmediato.';
+  'Compramos baterías usadas de coche, moto y maquinaria en todo Madrid. Recogida a domicilio sin coste y pago inmediato.';
 ---
 
 <Layout title={title} description={description} breadcrumbs={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }, { name: 'Compra de baterías', path: '/compra-de-baterias/' }]}>
@@ -15,7 +16,7 @@ const description =
   <section class="hero hero--copper" style="padding-top:1rem">
     <div class="container">
       <span class="eyebrow text-copper">Baterías usadas</span>
-      <h1>Compra de baterías usadas en Getafe y Madrid</h1>
+      <h1>Compra de baterías usadas en Madrid</h1>
       <p class="lead">
         Compramos baterías usadas de coches, motos y maquinaria. Las recogemos en tu
         domicilio, las manipulamos con cuidado para evitar derrames y te pagamos al
@@ -85,6 +86,12 @@ const description =
       <a href="/gestion-de-metales/">Ver el resto de metales que compramos →</a>
       {' · '}
       <a href="/precios-chatarra/">Cómo calculamos el precio →</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <MaterialLinks heading="Otros materiales que compramos" current="baterias" />
     </div>
   </section>
 

@@ -2,11 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import MaterialLinks from '../components/MaterialLinks.astro';
 import Faq from '../components/Faq.astro';
 import OtherZones from '../components/OtherZones.astro';
 import { site, whatsappLink } from '../config/site';
 
-const title = 'Chatarrero en Getafe | MetalRenova';
+const title = 'Chatarrería y chatarrero en Getafe | MetalRenova';
 const description =
   'Somos un chatarrero con base en Getafe: recogida de chatarra a domicilio y pago inmediato. Cobre, aluminio, hierro y más metales, el mismo día.';
 
@@ -32,7 +33,7 @@ const faqItems = [
   <section class="hero hero--cyan" style="padding-top:1rem">
     <div class="container">
       <span class="eyebrow">Getafe</span>
-      <h1>Chatarrero en Getafe</h1>
+      <h1>Chatarrería y chatarrero en Getafe</h1>
       <p class="lead">
         MetalRenova tiene su base en Getafe, en Calle Pensamiento. Al estar aquí mismo,
         normalmente somos de los primeros en poder pasar a recoger tu chatarra, muchas
@@ -84,6 +85,12 @@ const faqItems = [
   <section class="section section--alt">
     <div class="container">
       <Faq items={faqItems} title="Preguntas sobre el servicio en Getafe" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <MaterialLinks heading="Materiales que recogemos en Getafe" />
     </div>
   </section>
 

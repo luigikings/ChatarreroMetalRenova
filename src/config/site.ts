@@ -4,9 +4,13 @@
 
 export const site = {
   name: 'MetalRenova',
-  tagline: 'Chatarrero en Madrid',
+  tagline: 'Chatarrería en Madrid',
   domain: 'chatarreriametalrenova.es',
   url: 'https://chatarreriametalrenova.es',
+
+  // Fecha de apertura confirmada por el cliente (coincide con la ficha de Google).
+  foundingDate: '2005-05-10',
+  foundingYear: 2005,
 
   // Teléfono principal: se usa para WhatsApp y como botón "Llamar" por defecto.
   phonePrimary: '662 25 22 35',
@@ -59,6 +63,7 @@ export const site = {
   googleAnalyticsId: 'G-G63FSBJNTX',
 
   zones: [
+    { slug: 'madrid', name: 'Madrid capital', principal: false, page: '/chatarrero-madrid/' },
     { slug: 'getafe', name: 'Getafe', principal: true, page: '/chatarrero-getafe/' },
     { slug: 'leganes', name: 'Leganés', principal: false, page: '/chatarrero-leganes/' },
     { slug: 'fuenlabrada', name: 'Fuenlabrada', principal: false, page: '/chatarrero-fuenlabrada/' },
@@ -66,16 +71,16 @@ export const site = {
     { slug: 'mostoles', name: 'Móstoles', principal: false, page: '/chatarrero-mostoles/' },
     { slug: 'pinto', name: 'Pinto', principal: false, page: '/chatarrero-pinto/' },
     { slug: 'parla', name: 'Parla', principal: false, page: '/chatarrero-parla/' },
-    { slug: 'madrid', name: 'Madrid capital', principal: false, page: '/chatarrero-madrid/' },
+    { slug: 'valdemoro', name: 'Valdemoro', principal: false, page: '/chatarrero-valdemoro/' },
   ],
 
+  // Materiales con página propia (el resto de metales vive en /gestion-de-metales/).
   materials: [
-    { slug: 'cobre', name: 'Cobre' },
-    { slug: 'aluminio', name: 'Aluminio' },
-    { slug: 'laton', name: 'Latón' },
-    { slug: 'hierro-y-acero', name: 'Hierro y acero inoxidable' },
-    { slug: 'plomo', name: 'Plomo' },
-    { slug: 'baterias', name: 'Baterías usadas' },
+    { slug: 'cobre', name: 'Cobre', page: '/compra-de-cobre/' },
+    { slug: 'aluminio', name: 'Aluminio', page: '/compra-de-aluminio/' },
+    { slug: 'laton', name: 'Latón', page: '/compra-de-laton/' },
+    { slug: 'hierro-y-acero', name: 'Hierro y acero', page: '/compra-de-hierro-y-acero/' },
+    { slug: 'baterias', name: 'Baterías usadas', page: '/compra-de-baterias/' },
   ],
 } as const;
 

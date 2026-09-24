@@ -3,13 +3,14 @@ import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import MaterialLinks from '../components/MaterialLinks.astro';
 import { site, whatsappLink } from '../config/site';
 import fotoTuberia from '../assets/images/tuberia-cobre.jpg';
 import fotoCable from '../assets/images/cable-cobre.jpg';
 
-const title = 'Compra de cobre en Getafe y Madrid | MetalRenova';
+const title = 'Compra de cobre en Madrid | MetalRenova';
 const description =
-  'Compramos cobre en Getafe y el sur de Madrid: cable, tuberías y restos eléctricos. Recogida a domicilio gratuita y pago inmediato en efectivo.';
+  'Compramos cobre en todo Madrid: cable, tuberías y restos eléctricos. Recogida a domicilio gratuita y pago inmediato en efectivo.';
 ---
 
 <Layout title={title} description={description} breadcrumbs={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }, { name: 'Compra de cobre', path: '/compra-de-cobre/' }]}>
@@ -18,7 +19,7 @@ const description =
   <section class="hero hero--copper" style="padding-top:1rem">
     <div class="container">
       <span class="eyebrow text-copper">Cobre</span>
-      <h1>Compra de cobre en Getafe y Madrid</h1>
+      <h1>Compra de cobre en Madrid</h1>
       <p class="lead">
         El cobre es uno de los metales que mejor pagamos, porque es de los más buscados en
         el reciclaje. Si tienes cable, tuberías o restos de una instalación, te decimos el
@@ -88,6 +89,12 @@ const description =
       <a href="/gestion-de-metales/">Ver el resto de metales que compramos →</a>
       {' · '}
       <a href="/precios-chatarra/">Cómo calculamos el precio →</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <MaterialLinks heading="Otros materiales que compramos" current="cobre" />
     </div>
   </section>
 

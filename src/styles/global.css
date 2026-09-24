@@ -583,7 +583,8 @@ strong { color: var(--text); }
 /* --- Pie de página ------------------------------------------------------------------ */
 .site-footer { background: var(--bg-elevated); border-top: 1px solid var(--border); padding-block: 3rem; }
 .footer-grid { display: grid; gap: 2rem; }
-@media (min-width: 720px) { .footer-grid { grid-template-columns: 1.3fr 1fr 1fr; } }
+@media (min-width: 720px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .footer-grid { grid-template-columns: 1.3fr 1fr 1fr 1fr; } }
 .site-footer h3 { font-size: 1rem; color: var(--text); }
 .site-footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
 .site-footer a { color: var(--text-muted); text-decoration: none; font-size: 0.92rem; }

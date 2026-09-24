@@ -9,9 +9,9 @@ import fotoChatarraExterior from '../assets/images/chatarra-hierro-exterior.jpg'
 import fotoEquipoCargando from '../assets/images/equipo-cargando-hierro.jpg';
 import fotoMaterialClasificado from '../assets/images/material-clasificado-perfiles.jpg';
 
-const title = 'Chatarrero en Getafe y Madrid | MetalRenova';
+const title = 'Chatarrería en Madrid abierta 24 horas | MetalRenova';
 const description =
-  'Compramos chatarra y metales en Getafe y el sur de Madrid, con recogida a domicilio y pago inmediato. Pide tu valoración gratis por WhatsApp.';
+  `Chatarrería en todo Madrid desde ${site.foundingYear}. Compramos chatarra y metales con recogida a domicilio y pago inmediato. Abierto 24 horas, todos los días.`;
 
 const steps = [
   {
@@ -63,7 +63,7 @@ const faqItems = [
   {
     question: '¿En qué zonas trabajáis?',
     answer:
-      'En Getafe y alrededores: Leganés, Fuenlabrada, Alcorcón, Móstoles, Pinto, Parla y Madrid capital.',
+      'En todo Madrid. Tenemos la base en Getafe y trabajamos a diario en Madrid capital, Leganés, Fuenlabrada, Alcorcón, Móstoles, Pinto, Parla y Valdemoro, entre otras zonas.',
   },
 ];
 
@@ -81,11 +81,12 @@ const reviews = [
 <Layout title={title} description={description} isHome>
   <section class="hero">
     <div class="container">
-      <span class="eyebrow">Chatarrero en Getafe y todo Madrid</span>
-      <h1>Vendemos tu chatarra hoy mismo, sin que te muevas de casa</h1>
+      <span class="eyebrow">Chatarrero en todo Madrid · Desde {site.foundingYear}</span>
+      <h1>Chatarrería en Madrid: vendemos tu chatarra hoy mismo</h1>
       <p class="lead">
-        Recogemos cobre, aluminio, hierro y otros metales en Getafe y alrededores.
-        Te damos el precio por WhatsApp antes de venir y te pagamos al momento.
+        Recogemos cobre, aluminio, hierro y otros metales en todo Madrid, sin que te
+        muevas de casa. Te damos el precio por WhatsApp antes de venir y te pagamos al
+        momento.
       </p>
       <div class="btn-row">
         <a class="btn btn--whatsapp" href={whatsappLink('Hola MetalRenova, quiero pedir una valoración de mi chatarra.')} data-track="whatsapp">
@@ -100,8 +101,9 @@ const reviews = [
       <ul class="trust-chips">
         <li><Icon name="check" />Recogida el mismo día, según disponibilidad</li>
         <li><Icon name="coin" />Pago inmediato en mano</li>
-        <li><Icon name="mappin" />Getafe, Leganés, Fuenlabrada y alrededores</li>
+        <li><Icon name="mappin" />Recogida en todo Madrid</li>
         <li><Icon name="clock" />{site.hours.label}</li>
+        <li><Icon name="check" />Chatarrería desde {site.foundingYear}</li>
       </ul>
     </div>
   </section>
@@ -150,7 +152,7 @@ const reviews = [
       <div class="section-head">
         <span class="eyebrow">Zonas</span>
         <h2>Dónde recogemos chatarra</h2>
-        <p>Con base en Getafe, cubrimos el sur de la Comunidad de Madrid.</p>
+        <p>Con base en Getafe, recogemos chatarra en todo Madrid. Estas son las zonas donde más trabajamos:</p>
       </div>
       <ul class="zone-list">
         {site.zones.map((zone) => (

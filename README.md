@@ -16,14 +16,14 @@
 ### Overview
 
 A full rebuild, from the ground up, of the website for **MetalRenova**, a
-scrap-metal collection business (chatarrero) operating in Getafe and the
-Madrid region, Spain. The previous site ran on WordPress; this version is a
+scrap-metal collection business (chatarrero) operating across Madrid, Spain,
+from its base in Getafe since 2005. The previous site ran on WordPress; this version is a
 static site built with **Astro**, designed around three constraints: it had
 to be fast, it had to rank locally, and it had to ship with zero moving
 parts to maintain (no CMS, no database, no server-side code).
 
-The project covers the full scope of a small local-business site: 25 static
-pages (home, 6 material-specific landing pages, 8 city/zone landing pages,
+The project covers the full scope of a small local-business site: 27 static
+pages (home, 6 material-specific landing pages, 9 city/zone landing pages,
 service pages, legal pages, and a custom 404), all driven from a single
 source-of-truth config file so business data (phone numbers, address,
 hours, service areas) never has to be edited in more than one place.
@@ -38,7 +38,7 @@ hours, service areas) never has to be edited in more than one place.
   self-hosted as subset `.woff2` files instead of pulled from Google Fonts.
 - **Local SEO built in** — per-page `<title>`/meta description, canonical
   URLs, `LocalBusiness` and `BreadcrumbList` JSON-LD structured data, an
-  auto-generated XML sitemap (`@astrojs/sitemap`), and eight dedicated
+  auto-generated XML sitemap (`@astrojs/sitemap`), and nine dedicated
   landing pages for the towns the business actually serves.
 - **Image pipeline** — real business photos processed through Astro's
   built-in `<Image>` component (automatic `WebP` conversion, explicit
@@ -70,7 +70,7 @@ src/
   data/precios.json    ← material prices (optional, falls back to "ask us")
   layouts/Layout.astro ← base template: SEO head, header, footer, mobile CTA bar
   components/          ← Header, Footer, Logo, Faq, Breadcrumbs, OtherZones, etc.
-  pages/                ← one .astro file = one route (25 pages total)
+  pages/                ← one .astro file = one route (27 pages total)
   styles/global.css    ← all site CSS, no external UI library
 public/
   fonts/                ← self-hosted Inter & Barlow Condensed (.woff2)
@@ -107,14 +107,14 @@ transcribed verbatim with a link back to the original listing).
 
 Reconstrucción completa, desde cero, de la web de **MetalRenova**, un
 negocio de compra y recogida de chatarra (chatarrero) que opera en Getafe y
-la zona sur de Madrid. La web anterior estaba hecha en WordPress; esta
+todo Madrid desde 2005. La web anterior estaba hecha en WordPress; esta
 versión es un sitio estático construido con **Astro**, pensado alrededor de
 tres condiciones: tenía que ser rápida, tenía que posicionar bien a nivel
 local, y tenía que funcionar sin ninguna pieza que mantener (sin CMS, sin
 base de datos, sin código de servidor).
 
-El proyecto cubre el alcance completo de una web de negocio local: 25
-páginas estáticas (home, 6 páginas específicas por material, 8 páginas de
+El proyecto cubre el alcance completo de una web de negocio local: 27
+páginas estáticas (home, 6 páginas específicas por material, 9 páginas de
 zona/ciudad, páginas de servicios, páginas legales y un 404 personalizado),
 todo controlado desde un único archivo de configuración para que los datos
 del negocio (teléfonos, dirección, horario, zonas de servicio) nunca haya
@@ -132,7 +132,7 @@ que tocarlos en más de un sitio.
   cargarse desde Google Fonts.
 - **SEO local integrado** — `<title>` y meta description por página, URLs
   canónicas, datos estructurados JSON-LD (`LocalBusiness` y
-  `BreadcrumbList`), sitemap XML autogenerado (`@astrojs/sitemap`), y ocho
+  `BreadcrumbList`), sitemap XML autogenerado (`@astrojs/sitemap`), y nueve
   páginas de aterrizaje dedicadas a las ciudades donde realmente trabaja
   el negocio.
 - **Pipeline de imágenes** — fotos reales del negocio procesadas con el
@@ -168,7 +168,7 @@ src/
   data/precios.json    ← precios de materiales (opcional, si no hay dato muestra "consúltanos")
   layouts/Layout.astro ← plantilla base: SEO, header, footer, barra CTA móvil
   components/          ← Header, Footer, Logo, Faq, Breadcrumbs, OtherZones, etc.
-  pages/                ← un archivo .astro = una URL (25 páginas en total)
+  pages/                ← un archivo .astro = una URL (27 páginas en total)
   styles/global.css    ← todo el CSS del sitio, sin librería externa
 public/
   fonts/                ← Inter y Barlow Condensed autoalojadas (.woff2)
