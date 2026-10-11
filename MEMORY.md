@@ -4,7 +4,7 @@ Memoria del proyecto entre sesiones. Máximo ~50 líneas: resume o elimina lo qu
 ## Estado actual
 - v1 desplegada en chatarreriametalrenova.es: 27 páginas estáticas con Astro, SEO local y `.htaccess` para Hostinger.
 - Spec 001 «Auditoría SEO: marcado y técnico»: implementada y validada (APROBADO), sin commit ni despliegue todavía.
-- Spec 002 «Auditoría SEO: contenido y enlazado»: implementada y validada (APROBADO); pendiente de commit/despliegue y de la revisión visual del dueño (desktop y 375 px).
+- Spec 002 «Auditoría SEO: contenido y enlazado»: implementada, validada (VEREDICTO: APROBADO), commiteada (28e194c) y subida al remoto; solo queda la revisión visual del dueño (desktop y 375 px).
 - Spec 003 (contenido propio de las páginas de zona + FAQ de precios con «orientativo»): recomendada, sin redactar.
 
 ## Decisiones (y por qué)
