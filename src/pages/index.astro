@@ -22,7 +22,7 @@ const steps = [
   {
     icon: 'coin' as const,
     title: 'Te decimos el precio y agendamos',
-    text: 'Te damos un precio orientativo antes de venir y quedamos el día y la hora que mejor te vengan.',
+    text: 'Te confirmamos el precio por WhatsApp antes de venir y quedamos el día y la hora que mejor te vengan.',
   },
   {
     icon: 'truck' as const,
@@ -39,6 +39,15 @@ function priceLabel(desde: number | null, hasta: number | null) {
 // En home solo mostramos los 6 materiales principales; el resto vive en /gestion-de-metales/.
 const homeMaterialSlugs = ['cobre', 'aluminio', 'laton', 'hierro-y-acero', 'plomo', 'baterias'];
 const homeMateriales = precios.materiales.filter((m) => homeMaterialSlugs.includes(m.slug));
+
+// Anclas descriptivas con el H1 exacto de cada página de material (plan 002 §11).
+const anclasDescriptivas: Record<string, string> = {
+  cobre: 'Compra de cobre en Madrid →',
+  aluminio: 'Compra de aluminio en Madrid →',
+  laton: 'Compra de latón en Madrid →',
+  'hierro-y-acero': 'Compra de hierro y acero en Madrid →',
+  baterias: 'Compra de baterías usadas en Madrid →',
+};
 
 const faqItems = [
   {
@@ -132,18 +141,22 @@ const reviews = [
       <div class="section-head">
         <span class="eyebrow">Materiales</span>
         <h2>Qué metales compramos</h2>
-        <p>Precio orientativo por kilo. Te confirmamos el precio final por WhatsApp con fotos del material.</p>
+        <p>Precio bajo consulta. Te confirmamos el precio final por WhatsApp con fotos del material.</p>
       </div>
       <div class="grid grid--3">
         {homeMateriales.map((m) => (
           <div class="material-card">
             <span class="material-card__name">{m.material}</span>
             <span class="material-card__price">{priceLabel(m.precio_desde, m.precio_hasta)}</span>
-            <a href={m.pagina ?? '/gestion-de-metales/'}>Más información →</a>
+            {m.pagina ? (
+              <a href={m.pagina}>{anclasDescriptivas[m.slug]}</a>
+            ) : (
+              <span></span>
+            )}
           </div>
         ))}
       </div>
-      <p style="margin-top:1.5rem"><a href="/precios-chatarra/">Ver todos los materiales y precios →</a></p>
+      <p style="margin-top:1.5rem"><a href="/precios-chatarra/">Ver precios de la chatarra en Madrid →</a></p>
     </div>
   </section>
 
@@ -159,6 +172,21 @@ const reviews = [
           <li><a href={zone.page}>{zone.name}</a></li>
         ))}
       </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Servicios</span>
+        <h2>Vaciados, mudanzas y todos los servicios</h2>
+        <p>
+          Además de comprar chatarra, hacemos <a href="/vaciado-de-pisos-y-naves/">vaciado de pisos, locales y naves</a>
+          y <a href="/mudanzas/">mudanzas y portes en Madrid</a>: mudanzas de casas y oficinas y portes de muebles
+          sueltos. Cuéntanos qué necesitas y te damos un presupuesto sin compromiso por WhatsApp. Ver
+          <a href="/servicios/">todos nuestros servicios</a>.
+        </p>
+      </div>
     </div>
   </section>
 

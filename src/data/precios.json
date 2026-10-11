@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-09-18",
+  "actualizado": "2026-10-11",
   "materiales": [
     { "material": "Cobre", "slug": "cobre", "precio_desde": null, "precio_hasta": null, "pagina": "/compra-de-cobre/" },
     { "material": "Aluminio", "slug": "aluminio", "precio_desde": null, "precio_hasta": null, "pagina": "/compra-de-aluminio/" },

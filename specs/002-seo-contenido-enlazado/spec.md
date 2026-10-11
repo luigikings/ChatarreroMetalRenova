@@ -1,6 +1,6 @@
 # Spec 002 — Auditoría SEO: contenido y enlazado
 
-Estado: aprobada
+Estado: implementada
 
 > Esta spec es la segunda mitad de la auditoría SEO. La primera mitad (marcado del negocio, servicio, preguntas frecuentes y migas, metadatos, favicon, sitemap, caché, HSTS y redirecciones) está en `specs/001-auditoria-seo/spec.md`. Se planificará después de la 001.
 

@@ -4,8 +4,8 @@ Memoria del proyecto entre sesiones. Máximo ~50 líneas: resume o elimina lo qu
 ## Estado actual
 - v1 desplegada en chatarreriametalrenova.es: 27 páginas estáticas con Astro, SEO local y `.htaccess` para Hostinger.
 - Spec 001 «Auditoría SEO: marcado y técnico»: implementada y validada (APROBADO), sin commit ni despliegue todavía.
-- Spec 002 «Contenido y enlazado»: aprobada, pendiente de plan y tareas.
-- Spec 003 (contenido propio de las páginas de zona): recomendada, sin redactar.
+- Spec 002 «Auditoría SEO: contenido y enlazado»: implementada y validada (APROBADO); pendiente de commit/despliegue y de la revisión visual del dueño (desktop y 375 px).
+- Spec 003 (contenido propio de las páginas de zona + FAQ de precios con «orientativo»): recomendada, sin redactar.
 
 ## Decisiones (y por qué)
 - Salida 100% estática, sin backend ni formularios; contacto solo por `tel:` y WhatsApp: rapidez, SEO local y cero mantenimiento.
@@ -21,16 +21,25 @@ Memoria del proyecto entre sesiones. Máximo ~50 líneas: resume o elimina lo qu
 - 404 con `noindex`, sin canónica ni JSON-LD.
 - Nada de geo, priceRange, redes ni número de gestor de residuos hasta que el dueño los confirme. No marcar reseñas propias (Google no las acepta para el propio negocio).
 - Verificación: `npx astro check` + `npm run build` + revisión manual (desktop y 375 px); no hay suite de tests.
+- Fecha legible: función pura `src/lib/fecha.ts` sin `Date` ni zonas horarias (fecha de calendario, no instante); inválida o vacía = `null` y no se pinta.
+- `actualizado` en `src/data/precios.json` = fecha de publicación real confirmada, no la del build (así el HTML no cambia en cada compilación).
+- «Precio bajo consulta» alineado en entradilla, meta description e intro de materiales de la portada: ningún material tiene cifra confirmada.
+- Anclas descriptivas tomadas del H1 exacto de la página de destino («Compra de … en Madrid →»); nada de «Más información».
+- Material sin página propia (plomo, bronce…): tarjeta sin enlace; la portada ya enlaza a la lista completa de materiales y precios.
+- Aprobado por el dueño el texto del paso 2 de «Cómo funciona» («Te confirmamos el precio por WhatsApp antes de venir…»): no tocar.
 
 ## Aprendizajes y errores a evitar
 - En `.htaccess`, nunca comentarios al final de una directiva (`Header ... # x`): Apache los lee como argumentos y da 500. Comentarios en línea propia.
 - Textos nuevos (metas, contenidos) solo con afirmaciones ya publicadas en la web o confirmadas por el dueño.
+- «Orientativo» solo permitido hoy en la FAQ de `/precios-chatarra/`: quedó fuera del alcance de RF-7 y está pendiente para la spec 003. No lo extiendas a otros textos.
+- La sección nueva «Vaciados, mudanzas y todos los servicios» de la portada va con `class="section"`, no `section--alt`: la siguiente («Nuestro trabajo») también es gris y sin ese contraste se funden.
 - No aceptar ni rechazar el banner de cookies al revisar en el navegador.
 
 ## Próximos pasos
 - Commit y despliegue de la spec 001; después, `curl -I` a: `http://`, `http://www.`, `/contacto`, `/favicon.ico`, una URL inexistente, un archivo de `/_astro/`, `/og-image.jpg`, `/fonts/…`, `/sitemap-index.xml`, `/robots.txt` (301 únicos, 404 real, caché y HSTS).
+- Commit y despliegue de la spec 002 junto con la 001; antes de publicar, revisión visual del dueño de la portada y `/precios-chatarra/` (desktop y 375 px).
 - Si LiteSpeed ignora `env=CON_HUELLA`, usar un `.htaccess` propio dentro de `_astro/` (alternativa ya prevista en el plan 001).
 - Validar portada, una zona, cobre, mudanzas y precios en validator.schema.org y en la Prueba de resultados enriquecidos; PageSpeed en móvil.
-- Planificar la spec 002.
+- Redactar la spec 003 (contenido de las 8 zonas restantes con datos reales del dueño + FAQ de precios con «orientativo»).
 - Spec aparte: aspecto legal del banner de cookies / Consent Mode v2.
 - Fuera del código: Google Business Profile y Search Console (enviar sitemap).

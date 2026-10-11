@@ -24,6 +24,15 @@ const materials = [
 function paginaDe(slug: string): string | null {
   return precios.materiales.find((m) => m.slug === slug)?.pagina ?? null;
 }
+
+// Anclas descriptivas con el H1 exacto de cada página de material (plan 002 §11).
+const anclasDescriptivas: Record<string, string> = {
+  cobre: 'Compra de cobre en Madrid →',
+  aluminio: 'Compra de aluminio en Madrid →',
+  laton: 'Compra de latón en Madrid →',
+  'hierro-y-acero': 'Compra de hierro y acero en Madrid →',
+  baterias: 'Compra de baterías usadas en Madrid →',
+};
 ---
 
 <Layout title={title} description={description} servicio={{ nombre: 'Compra de metales y chatarra' }} breadcrumbs={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }]}>
@@ -61,12 +70,12 @@ function paginaDe(slug: string): string | null {
             <div class="material-card">
               <span class="material-card__name">{m.name}</span>
               <p class="mt-0">{m.text}</p>
-              {pagina && <a href={pagina}>Más información →</a>}
+              {pagina && <a href={pagina}>{anclasDescriptivas[m.slug] ?? m.name}</a>}
             </div>
           );
         })}
       </div>
-      <p style="margin-top:1.5rem"><a href="/precios-chatarra/">Ver la tabla de precios →</a></p>
+      <p style="margin-top:1.5rem"><a href="/precios-chatarra/">Ver precios de la chatarra en Madrid →</a></p>
     </div>
   </section>
 
