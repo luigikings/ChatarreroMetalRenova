@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import MaterialLinks from '../components/MaterialLinks.astro';
 import Faq from '../components/Faq.astro';
 import OtherZones from '../components/OtherZones.astro';
@@ -28,8 +27,6 @@ const faqItems = [
 ---
 
 <Layout title={title} description={description} breadcrumbs={[{ name: 'Chatarrero en Getafe', path: '/chatarrero-getafe/' }]}>
-  <Breadcrumbs items={[{ name: 'Chatarrero en Getafe', path: '/chatarrero-getafe/' }]} />
-
   <section class="hero hero--cyan" style="padding-top:1rem">
     <div class="container">
       <span class="eyebrow">Getafe</span>

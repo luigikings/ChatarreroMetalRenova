@@ -1,18 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import MaterialLinks from '../components/MaterialLinks.astro';
 import { site, whatsappLink } from '../config/site';
 
 const title = 'Compra de aluminio en Madrid | MetalRenova';
 const description =
-  'Compramos aluminio en todo Madrid: perfiles, ventanas, chapa y piezas industriales. Recogida a domicilio y pago inmediato.';
+  'Compramos aluminio en todo Madrid: perfiles, ventanas, chapa y piezas industriales. Recogida a domicilio sin coste y pago inmediato. Pide precio por WhatsApp.';
 ---
 
-<Layout title={title} description={description} breadcrumbs={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }, { name: 'Compra de aluminio', path: '/compra-de-aluminio/' }]}>
-  <Breadcrumbs items={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }, { name: 'Compra de aluminio', path: '/compra-de-aluminio/' }]} />
-
+<Layout title={title} description={description} servicio={{ nombre: 'Compra de aluminio' }} breadcrumbs={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }, { name: 'Compra de aluminio', path: '/compra-de-aluminio/' }]}>
   <section class="hero hero--copper" style="padding-top:1rem">
     <div class="container">
       <span class="eyebrow text-copper">Aluminio</span>

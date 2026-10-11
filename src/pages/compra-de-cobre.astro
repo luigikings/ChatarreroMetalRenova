@@ -2,7 +2,6 @@
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import MaterialLinks from '../components/MaterialLinks.astro';
 import { site, whatsappLink } from '../config/site';
 import fotoTuberia from '../assets/images/tuberia-cobre.jpg';
@@ -10,12 +9,10 @@ import fotoCable from '../assets/images/cable-cobre.jpg';
 
 const title = 'Compra de cobre en Madrid | MetalRenova';
 const description =
-  'Compramos cobre en todo Madrid: cable, tuberías y restos eléctricos. Recogida a domicilio gratuita y pago inmediato en efectivo.';
+  'Compramos cobre en todo Madrid: cable pelado o sin pelar, tuberías, motores y restos eléctricos. Recogida a domicilio gratuita y pago inmediato en efectivo.';
 ---
 
-<Layout title={title} description={description} breadcrumbs={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }, { name: 'Compra de cobre', path: '/compra-de-cobre/' }]}>
-  <Breadcrumbs items={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }, { name: 'Compra de cobre', path: '/compra-de-cobre/' }]} />
-
+<Layout title={title} description={description} servicio={{ nombre: 'Compra de cobre' }} breadcrumbs={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }, { name: 'Compra de cobre', path: '/compra-de-cobre/' }]}>
   <section class="hero hero--copper" style="padding-top:1rem">
     <div class="container">
       <span class="eyebrow text-copper">Cobre</span>

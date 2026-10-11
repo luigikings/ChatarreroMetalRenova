@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { site, whatsappLink } from '../config/site';
 import precios from '../data/precios.json';
 
@@ -27,9 +26,7 @@ function paginaDe(slug: string): string | null {
 }
 ---
 
-<Layout title={title} description={description} breadcrumbs={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }]}>
-  <Breadcrumbs items={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }]} />
-
+<Layout title={title} description={description} servicio={{ nombre: 'Compra de metales y chatarra' }} breadcrumbs={[{ name: 'Gestión de metales', path: '/gestion-de-metales/' }]}>
   <section class="hero" style="padding-top:1rem">
     <div class="container">
       <span class="eyebrow">Materiales</span>

@@ -1,8 +1,11 @@
 ---
 // Acordeón de preguntas frecuentes con <details>, sin JavaScript.
+// Emite además el marcado FAQPage con las mismas preguntas y respuestas visibles.
+import { faqSchema, aJsonLd } from '../lib/schema';
 interface QA { question: string; answer: string }
 interface Props { items: QA[]; title?: string }
 const { items, title = 'Preguntas frecuentes' } = Astro.props;
+const faq = faqSchema(items);
 ---
 <div class="faq-wrap">
   <h2>{title}</h2>
@@ -14,4 +17,5 @@ const { items, title = 'Preguntas frecuentes' } = Astro.props;
       </details>
     ))}
   </div>
+  {faq && <script type="application/ld+json" set:html={aJsonLd(faq)} />}
 </div>

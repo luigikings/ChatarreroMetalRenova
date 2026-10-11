@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { site } from '../config/site';
 
 const title = 'Política de cookies | MetalRenova';
@@ -8,8 +7,6 @@ const description = 'Qué cookies usa la web de MetalRenova y para qué sirven.'
 ---
 
 <Layout title={title} description={description} breadcrumbs={[{ name: 'Política de cookies', path: '/politica-de-cookies/' }]}>
-  <Breadcrumbs items={[{ name: 'Política de cookies', path: '/politica-de-cookies/' }]} />
-
   <section class="section" style="padding-top:1rem">
     <div class="container">
       <h1>Política de cookies</h1>

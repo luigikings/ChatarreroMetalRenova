@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { site } from '../config/site';
 
 const title = 'Política de privacidad | MetalRenova';
@@ -8,8 +7,6 @@ const description = 'Cómo trata MetalRenova los datos cuando nos contactas por 
 ---
 
 <Layout title={title} description={description} breadcrumbs={[{ name: 'Política de privacidad', path: '/politica-de-privacidad/' }]}>
-  <Breadcrumbs items={[{ name: 'Política de privacidad', path: '/politica-de-privacidad/' }]} />
-
   <section class="section" style="padding-top:1rem">
     <div class="container">
       <h1>Política de privacidad</h1>

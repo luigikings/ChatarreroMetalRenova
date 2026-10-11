@@ -2,14 +2,13 @@
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { site, whatsappLink } from '../config/site';
 import fotoMaquinaria from '../assets/images/maquinaria-industrial-nave.jpg';
 import fotoLavadora from '../assets/images/lavadora-vaciado-piso.jpg';
 
 const title = 'Vaciados realizados en Madrid | MetalRenova';
 const description =
-  'Fotos y ejemplos de vaciados de naves, locales, bares y pisos que hemos hecho en Madrid. Pide tu presupuesto sin compromiso.';
+  'Fotos y ejemplos de vaciados de naves, locales, bares, talleres y pisos que hemos hecho en Madrid. Pide tu presupuesto sin compromiso por WhatsApp.';
 
 const spaces = [
   {
@@ -35,9 +34,7 @@ const spaces = [
 ];
 ---
 
-<Layout title={title} description={description} breadcrumbs={[{ name: 'Nuestros trabajos', path: '/nuestros-trabajos/' }]}>
-  <Breadcrumbs items={[{ name: 'Nuestros trabajos', path: '/nuestros-trabajos/' }]} />
-
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Servicios', path: '/servicios/' }, { name: 'Nuestros trabajos', path: '/nuestros-trabajos/' }]}>
   <section class="hero" style="padding-top:1rem">
     <div class="container">
       <span class="eyebrow">Nuestro trabajo</span>

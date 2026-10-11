@@ -3,7 +3,9 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileCta from '../components/MobileCta.astro';
 import CookieConsent from '../components/CookieConsent.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { site } from '../config/site';
+import { negocioSchema, servicioSchema, migasSchema, aJsonLd } from '../lib/schema';
 import '../styles/global.css';
 
 interface Breadcrumb {
@@ -15,66 +17,19 @@ interface Props {
   title: string;
   description: string;
   breadcrumbs?: Breadcrumb[];
+  /** Si la página describe un servicio concreto, se emite su marcado Service. */
+  servicio?: { nombre: string };
+  /** Sin uso desde que el marcado del negocio sale en todas las páginas indexables. */
   isHome?: boolean;
   noindex?: boolean;
 }
 
-const { title, description, breadcrumbs = [], isHome = false, noindex = false } = Astro.props;
+const { title, description, breadcrumbs = [], servicio, noindex = false } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, site.url).toString();
 
-const localBusinessSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'RecyclingCenter',
-  '@id': `${site.url}/#negocio`,
-  name: site.name,
-  description: `Chatarrería en Madrid desde ${site.foundingYear}: compra de chatarra y metales con recogida a domicilio y pago inmediato.`,
-  url: site.url,
-  logo: `${site.url}/icon-512.png`,
-  image: `${site.url}/og-image.jpg`,
-  foundingDate: site.foundingDate,
-  telephone: site.phonePrimaryTel,
-  contactPoint: [site.phonePrimaryTel, site.phoneSecondaryTel].map((telephone) => ({
-    '@type': 'ContactPoint',
-    telephone,
-    contactType: 'customer service',
-    availableLanguage: 'es',
-  })),
-  hasMap: site.address.mapsUrl,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: site.address.street,
-    postalCode: site.address.postalCode,
-    addressLocality: site.address.city,
-    addressRegion: site.address.region,
-    addressCountry: site.address.country,
-  },
-  areaServed: [
-    { '@type': 'AdministrativeArea', name: 'Comunidad de Madrid' },
-    ...site.zones.map((z) => ({ '@type': 'City', name: z.name === 'Madrid capital' ? 'Madrid' : z.name })),
-  ],
-  openingHoursSpecification: {
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: site.hours.days,
-    opens: site.hours.opens,
-    closes: site.hours.closes,
-  },
-  sameAs: [site.googleBusinessUrl],
-};
-
-const breadcrumbSchema = breadcrumbs.length > 0 ? {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Inicio', item: site.url + '/' },
-    ...breadcrumbs.map((b, i) => ({
-      '@type': 'ListItem',
-      position: i + 2,
-      name: b.name,
-      item: site.url + b.path,
-    })),
-  ],
-} : null;
+// Fuente única de las migas: se pintan abajo y se marcan con los mismos datos.
+const breadcrumbSchema = migasSchema(breadcrumbs, site.url);
 ---
 
 <!doctype html>
@@ -84,10 +39,11 @@ const breadcrumbSchema = breadcrumbs.length > 0 ? {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content={description} />
-  <link rel="canonical" href={canonicalURL} />
+  {!noindex && <link rel="canonical" href={canonicalURL} />}
   {noindex && <meta name="robots" content="noindex, follow" />}
 
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="/icon-512.png" type="image/png" sizes="512x512" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <link rel="preload" href="/fonts/barlow-condensed-latin-700.woff2" as="font" type="font/woff2" crossorigin />
@@ -105,17 +61,21 @@ const breadcrumbSchema = breadcrumbs.length > 0 ? {
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content={`${site.url}/og-image.jpg`} />
 
-  {isHome && (
-    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  {!noindex && (
+    <script type="application/ld+json" set:html={aJsonLd(negocioSchema(site))} />
+  )}
+  {servicio && !noindex && (
+    <script type="application/ld+json" set:html={aJsonLd(servicioSchema(servicio.nombre, canonicalURL, site.url))} />
   )}
   {breadcrumbSchema && (
-    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={aJsonLd(breadcrumbSchema)} />
   )}
 </head>
 <body>
   <a href="#main" class="skip-link">Saltar al contenido</a>
   <Header />
   <main id="main">
+    {breadcrumbs.length > 0 && <Breadcrumbs items={breadcrumbs} />}
     <slot />
   </main>
   <Footer />

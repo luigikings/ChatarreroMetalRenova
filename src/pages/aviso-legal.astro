@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { site } from '../config/site';
 
 const title = 'Aviso legal | MetalRenova';
@@ -8,8 +7,6 @@ const description = 'Información legal y condiciones de uso del sitio web de Me
 ---
 
 <Layout title={title} description={description} breadcrumbs={[{ name: 'Aviso legal', path: '/aviso-legal/' }]}>
-  <Breadcrumbs items={[{ name: 'Aviso legal', path: '/aviso-legal/' }]} />
-
   <section class="section" style="padding-top:1rem">
     <div class="container">
       <h1>Aviso legal</h1>

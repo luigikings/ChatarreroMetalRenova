@@ -2,7 +2,6 @@
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { site, whatsappLink } from '../config/site';
 import fotoEquipoCargando from '../assets/images/equipo-cargando-camion-obra.jpg';
 
@@ -29,9 +28,7 @@ const steps = [
 ];
 ---
 
-<Layout title={title} description={description} breadcrumbs={[{ name: 'Cómo funciona', path: '/como-funciona/' }]}>
-  <Breadcrumbs items={[{ name: 'Cómo funciona', path: '/como-funciona/' }]} />
-
+<Layout title={title} description={description} breadcrumbs={[{ name: 'Servicios', path: '/servicios/' }, { name: 'Cómo funciona', path: '/como-funciona/' }]}>
   <section class="hero" style="padding-top:1rem">
     <div class="container">
       <span class="eyebrow">Proceso</span>
